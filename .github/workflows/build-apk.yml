@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Next.js app (static export)
+      - name: Build Next.js app (production)
         run: pnpm run build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -45,11 +45,8 @@ jobs:
 
       - name: Initialize Capacitor Android
         run: |
-          npx cap init "نِست بلوم" app.nestbloom --web-dir out --skip-appid-validation
+          npx cap init "نِست بلوم" app.nestbloom --skip-appid-validation
           npx cap add android
-
-      - name: Copy web assets to Capacitor
-        run: npx cap copy android
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3

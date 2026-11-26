@@ -3,6 +3,8 @@ import { cookies } from 'next/headers';
 import { db } from '@/db/index';
 import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+
+export const dynamic = 'force-dynamic';
 import { encode } from 'next-auth/jwt';
 
 export async function GET(req: Request) {
