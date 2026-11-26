@@ -3,7 +3,18 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Mail, ArrowRight } from 'lucide.react';
+
+const MailIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+);
+
+const ArrowRightIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+  </svg>
+);
 
 export default function SignInPage() {
   const router = useRouter();
@@ -62,7 +73,7 @@ export default function SignInPage() {
       <div className="min-h-screen flex items-center justify-center bg-[#fdfbf7] p-4 dir-rtl">
         <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8 border border-[#f3e8dd] text-center">
           <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-            <Mail className="w-6 h-6 text-emerald-600" />
+            <MailIcon />
           </div>
           <h1 className="text-2xl font-bold text-[#453a32] mb-2">تم إرسال الرابط ✓</h1>
           <p className="text-[#6b6b6b] mb-6">
@@ -123,7 +134,7 @@ export default function SignInPage() {
               disabled={isLoading}
               className="w-full py-3.5 rounded-xl bg-emerald-500 text-white font-semibold text-lg hover:bg-emerald-600 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              {isLoading ? 'جاري الإرسال…' : <><ArrowRight className="w-5 h-5" /> إرسال رابط الدخول</>}
+              {isLoading ? 'جاري الإرسال…' : <><ArrowRightIcon /> إرسال رابط الدخول</>}
             </button>
           </form>
 
@@ -140,7 +151,7 @@ export default function SignInPage() {
             onClick={handleDevSignIn}
             className="w-full py-3.5 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-700 font-semibold flex items-center justify-center gap-2 hover:bg-emerald-100 transition-all"
           >
-            <Mail className="w-5 h-5" />
+            <MailIcon />
             دخول سريع (وضع التطوير)
           </button>
         </div>
