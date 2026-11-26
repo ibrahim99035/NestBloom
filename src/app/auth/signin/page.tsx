@@ -1,10 +1,9 @@
 'use client';
 
 import React from 'react';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Mail, ArrowRight } from 'lucide-react';
+import { Mail, ArrowRight } from 'lucide.react';
 
 export default function SignInPage() {
   const router = useRouter();
