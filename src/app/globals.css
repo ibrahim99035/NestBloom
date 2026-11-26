@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-warm-50: #fdfbf7;
+  --color-warm-100: #fef7ed;
+  --color-warm-200: #f3e8dd;
+  --color-warm-800: #453a32;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --radius: 0.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-warm-50 text-warm-800;
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+}
+
+/* Arabic RTL support */
+[dir='rtl'] {
+  direction: rtl;
+}
+
+[dir='rtl'] .text-left {
+  text-align: right !important;
+}
+[dir='rtl'] .text-right {
+  text-align: left !important;
+}
+[dir='rtl'] .ml-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+[dir='rtl'] .mr-auto {
+  margin-left: auto;
+  margin-right: 0;
+}
+[dir='rtl'] .pl-4 {
+  padding-right: 1rem;
+  padding-left: 0;
+}
+[dir='rtl'] .pr-4 {
+  padding-left: 1rem;
+  padding-right: 0;
+}
+[dir='rtl'] .ml-4 {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+[dir='rtl'] .mr-4 {
+  margin-left: 1rem;
+  margin-right: 0;
+}
+[dir='rtl'] .flex-row {
+  flex-direction: row-reverse;
+}
+[dir='rtl'] .transform {
+  transform: scaleX(-1);
+}

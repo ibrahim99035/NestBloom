@@ -1,0 +1,2945 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-1",
+        "name_ar": "وحدة رعاية أساسية - أبشواي",
+        "name_en": "وحدة رعاية أساسية - أبشواي",
+        "type": "phc",
+        "phone": "084472288",
+        "emergency": true,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.838962,
+          29.126806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-2",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084314962",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.505869,
+          29.415094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-3",
+        "name_ar": "مستشفى أطفال - أبشواي",
+        "name_en": "مستشفى أطفال - أبشواي",
+        "type": "children",
+        "phone": "084258997",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.923961,
+          29.165423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-4",
+        "name_ar": "أخرى - segem",
+        "name_en": "أخرى - segem",
+        "type": "other",
+        "phone": "084266701",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.696134,
+          29.218987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-5",
+        "name_ar": "أخرى - الفيوم الجديدة",
+        "name_en": "أخرى - الفيوم الجديدة",
+        "type": "other",
+        "phone": "084920998",
+        "emergency": true,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.823528,
+          29.385991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-6",
+        "name_ar": "مستشفى عام / طوارئ - طامية",
+        "name_en": "مستشفى عام / طوارئ - طامية",
+        "type": "emergency",
+        "phone": "084502081",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.661175,
+          29.473507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-7",
+        "name_ar": "وحدة رعاية أساسية - أبشواي",
+        "name_en": "وحدة رعاية أساسية - أبشواي",
+        "type": "phc",
+        "phone": "084217482",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.854166,
+          29.107733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-8",
+        "name_ar": "مستشفى تأمين صحي - سنورس",
+        "name_en": "مستشفى تأمين صحي - سنورس",
+        "type": "insurance",
+        "phone": "084803216",
+        "emergency": true,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.763702,
+          29.244467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-9",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق 9",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084839438",
+        "emergency": true,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.589567,
+          29.348905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-10",
+        "name_ar": "أخرى - مدينة الفيوم 10",
+        "name_en": "أخرى - مدينة الفيوم",
+        "type": "other",
+        "phone": "084975512",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.829406,
+          29.298211
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-11",
+        "name_ar": "أخرى - أبشواي 11",
+        "name_en": "أخرى - أبشواي",
+        "type": "other",
+        "phone": "084923666",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.894791,
+          29.176462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-12",
+        "name_ar": "مستشفى تأمين صحي - segem 12",
+        "name_en": "مستشفى تأمين صحي - segem",
+        "type": "insurance",
+        "phone": "084573108",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.68207,
+          29.245702
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-13",
+        "name_ar": "وحدة رعاية أساسية - سنورس 13",
+        "name_en": "وحدة رعاية أساسية - سنورس",
+        "type": "phc",
+        "phone": "084662380",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.741186,
+          29.19986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-14",
+        "name_ar": "مستشفى تأمين صحي - segem 14",
+        "name_en": "مستشفى تأمين صحي - segem",
+        "type": "insurance",
+        "phone": "084411754",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.710203,
+          29.265187
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-15",
+        "name_ar": "وحدة رعاية أساسية - سنورس 15",
+        "name_en": "وحدة رعاية أساسية - سنورس",
+        "type": "phc",
+        "phone": "084360809",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.751094,
+          29.164284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-16",
+        "name_ar": "أخرى - طامية 16",
+        "name_en": "أخرى - طامية",
+        "type": "other",
+        "phone": "084669000",
+        "emergency": true,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.666601,
+          29.478275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-17",
+        "name_ar": "مستشفى أطفال - إطسا 17",
+        "name_en": "مستشفى أطفال - إطسا",
+        "type": "children",
+        "phone": "084628546",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.969885,
+          29.319231
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-18",
+        "name_ar": "مستشفى تخصصي - segem 18",
+        "name_en": "مستشفى تخصصي - segem",
+        "type": "specialized",
+        "phone": "084293702",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.706852,
+          29.236749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-19",
+        "name_ar": "مستشفى عام / طوارئ - أبشواي 19",
+        "name_en": "مستشفى عام / طوارئ - أبشواي",
+        "type": "emergency",
+        "phone": "084991059",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.863415,
+          29.140822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-20",
+        "name_ar": "مستشفى عام / طوارئ - طامية 20",
+        "name_en": "مستشفى عام / طوارئ - طامية",
+        "type": "emergency",
+        "phone": "084477564",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.610327,
+          29.480259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-21",
+        "name_ar": "مستشفى عام / طوارئ - طامية 21",
+        "name_en": "مستشفى عام / طوارئ - طامية",
+        "type": "emergency",
+        "phone": "084392229",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.601293,
+          29.479677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-22",
+        "name_ar": "أخرى - segem 22",
+        "name_en": "أخرى - segem",
+        "type": "other",
+        "phone": "084279601",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.735274,
+          29.27818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-23",
+        "name_ar": "أخرى - مدينة الفيوم 23",
+        "name_en": "أخرى - مدينة الفيوم",
+        "type": "other",
+        "phone": "084560178",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.810452,
+          29.308669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-24",
+        "name_ar": "أخرى - إطسا 24",
+        "name_en": "أخرى - إطسا",
+        "type": "other",
+        "phone": "084608821",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.902603,
+          29.300077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-25",
+        "name_ar": "مستشفى تخصصي - سنورس 25",
+        "name_en": "مستشفى تخصصي - سنورس",
+        "type": "specialized",
+        "phone": "084340810",
+        "emergency": true,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.731342,
+          29.202197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-26",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق 26",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084619683",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.55445,
+          29.402041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-27",
+        "name_ar": "مستشفى عام / طوارئ - segem 27",
+        "name_en": "مستشفى عام / طوارئ - segem",
+        "type": "emergency",
+        "phone": "084633720",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.7381,
+          29.295042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-28",
+        "name_ar": "أخرى - إطسا 28",
+        "name_en": "أخرى - إطسا",
+        "type": "other",
+        "phone": "084674155",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.92208,
+          29.291511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-29",
+        "name_ar": "أخرى - إطسا 29",
+        "name_en": "أخرى - إطسا",
+        "type": "other",
+        "phone": "084480812",
+        "emergency": true,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.872333,
+          29.248706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-30",
+        "name_ar": "مستشفى أطفال - مدينة الفيوم 30",
+        "name_en": "مستشفى أطفال - مدينة الفيوم",
+        "type": "children",
+        "phone": "084228031",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.809886,
+          29.291412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-31",
+        "name_ar": "أخرى - إطسا 31",
+        "name_en": "أخرى - إطسا",
+        "type": "other",
+        "phone": "084520542",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.918492,
+          29.259471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-32",
+        "name_ar": "وحدة رعاية أساسية - مدينة الفيوم 32",
+        "name_en": "وحدة رعاية أساسية - مدينة الفيوم",
+        "type": "phc",
+        "phone": "084964219",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.814251,
+          29.319823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-33",
+        "name_ar": "مستشفى أطفال - سنورس 33",
+        "name_en": "مستشفى أطفال - سنورس",
+        "type": "children",
+        "phone": "084445635",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.7609,
+          29.20713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-34",
+        "name_ar": "مستشفى عام / طوارئ - مدينة الفيوم 34",
+        "name_en": "مستشفى عام / طوارئ - مدينة الفيوم",
+        "type": "emergency",
+        "phone": "084470150",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.847294,
+          29.338433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-35",
+        "name_ar": "أخرى - طامية 35",
+        "name_en": "أخرى - طامية",
+        "type": "other",
+        "phone": "084694604",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.659775,
+          29.413574
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-36",
+        "name_ar": "أخرى - إطسا 36",
+        "name_en": "أخرى - إطسا",
+        "type": "other",
+        "phone": "084604259",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.880565,
+          29.32291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-37",
+        "name_ar": "مستشفى عام / طوارئ - إطسا 37",
+        "name_en": "مستشفى عام / طوارئ - إطسا",
+        "type": "emergency",
+        "phone": "084682391",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.882935,
+          29.283205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-38",
+        "name_ar": "مستشفى تخصصي - الفيوم الجديدة 38",
+        "name_en": "مستشفى تخصصي - الفيوم الجديدة",
+        "type": "specialized",
+        "phone": "084883113",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.7964,
+          29.399381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-39",
+        "name_ar": "أخرى - مدينة الفيوم 39",
+        "name_en": "أخرى - مدينة الفيوم",
+        "type": "other",
+        "phone": "084297658",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.797941,
+          29.327857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-40",
+        "name_ar": "مستشفى تأمين صحي - مدينة الفيوم 40",
+        "name_en": "مستشفى تأمين صحي - مدينة الفيوم",
+        "type": "insurance",
+        "phone": "084613007",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.798479,
+          29.304523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-41",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق 41",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084409323",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.526167,
+          29.429894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-42",
+        "name_ar": "أخرى - مدينة الفيوم 42",
+        "name_en": "أخرى - مدينة الفيوم",
+        "type": "other",
+        "phone": "084517170",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.8437,
+          29.333392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-43",
+        "name_ar": "أخرى - الفيوم الجديدة 43",
+        "name_en": "أخرى - الفيوم الجديدة",
+        "type": "other",
+        "phone": "084476256",
+        "emergency": true,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.798339,
+          29.300431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-44",
+        "name_ar": "مستشفى تخصصي - segem 44",
+        "name_en": "مستشفى تخصصي - segem",
+        "type": "specialized",
+        "phone": "084493051",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.745306,
+          29.293392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-45",
+        "name_ar": "مستشفى عام / طوارئ - الفيوم الجديدة 45",
+        "name_en": "مستشفى عام / طوارئ - الفيوم الجديدة",
+        "type": "emergency",
+        "phone": "084521510",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.82208,
+          29.323004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-46",
+        "name_ar": "وحدة رعاية أساسية - طامية 46",
+        "name_en": "وحدة رعاية أساسية - طامية",
+        "type": "phc",
+        "phone": "084424475",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.654921,
+          29.476831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-47",
+        "name_ar": "وحدة رعاية أساسية - segem 47",
+        "name_en": "وحدة رعاية أساسية - segem",
+        "type": "phc",
+        "phone": "084368765",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.691186,
+          29.29525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-48",
+        "name_ar": "أخرى - طامية 48",
+        "name_en": "أخرى - طامية",
+        "type": "other",
+        "phone": "084263638",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.626582,
+          29.419404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-49",
+        "name_ar": "مستشفى عام / طوارئ - أبشواي 49",
+        "name_en": "مستشفى عام / طوارئ - أبشواي",
+        "type": "emergency",
+        "phone": "084943204",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.869992,
+          29.125444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-50",
+        "name_ar": "مستشفى تأمين صحي - مدينة الفيوم 50",
+        "name_en": "مستشفى تأمين صحي - مدينة الفيوم",
+        "type": "insurance",
+        "phone": "084872402",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.861538,
+          29.318415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-51",
+        "name_ar": "مستشفى تخصصي - طامية 51",
+        "name_en": "مستشفى تخصصي - طامية",
+        "type": "specialized",
+        "phone": "084717050",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.620669,
+          29.491791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-52",
+        "name_ar": "مستشفى تأمين صحي - الفيوم الجديدة 52",
+        "name_en": "مستشفى تأمين صحي - الفيوم الجديدة",
+        "type": "insurance",
+        "phone": "084737020",
+        "emergency": true,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.842023,
+          29.371501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-53",
+        "name_ar": "مستشفى تأمين صحي - إطسا 53",
+        "name_en": "مستشفى تأمين صحي - إطسا",
+        "type": "insurance",
+        "phone": "084228486",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.917465,
+          29.277008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-54",
+        "name_ar": "مستشفى أطفال - سنورس 54",
+        "name_en": "مستشفى أطفال - سنورس",
+        "type": "children",
+        "phone": "084296032",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.70492,
+          29.153592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-55",
+        "name_ar": "وحدة رعاية أساسية - الفيوم الجديدة 55",
+        "name_en": "وحدة رعاية أساسية - الفيوم الجديدة",
+        "type": "phc",
+        "phone": "084560432",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.806861,
+          29.356468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-56",
+        "name_ar": "مستشفى تأمين صحي - الفيوم الجديدة 56",
+        "name_en": "مستشفى تأمين صحي - الفيوم الجديدة",
+        "type": "insurance",
+        "phone": "084896728",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.808207,
+          29.341134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-57",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق 57",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084707053",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.548827,
+          29.361486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-58",
+        "name_ar": "وحدة رعاية أساسية - سنورس 58",
+        "name_en": "وحدة رعاية أساسية - سنورس",
+        "type": "phc",
+        "phone": "084616876",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.743922,
+          29.193038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-59",
+        "name_ar": "مستشفى أطفال - الفيوم الجديدة 59",
+        "name_en": "مستشفى أطفال - الفيوم الجديدة",
+        "type": "children",
+        "phone": "084487465",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.821646,
+          29.351548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-60",
+        "name_ar": "وحدة رعاية أساسية - مدينة الفيوم 60",
+        "name_en": "وحدة رعاية أساسية - مدينة الفيوم",
+        "type": "phc",
+        "phone": "084562997",
+        "emergency": true,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.826993,
+          29.32079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-61",
+        "name_ar": "مستشفى تخصصي - طامية 61",
+        "name_en": "مستشفى تخصصي - طامية",
+        "type": "specialized",
+        "phone": "084869962",
+        "emergency": true,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.602199,
+          29.439857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-62",
+        "name_ar": "مستشفى تأمين صحي - سنورس 62",
+        "name_en": "مستشفى تأمين صحي - سنورس",
+        "type": "insurance",
+        "phone": "084971896",
+        "emergency": true,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.758618,
+          29.161932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-63",
+        "name_ar": "أخرى - segem 63",
+        "name_en": "أخرى - segem",
+        "type": "other",
+        "phone": "084427978",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.711093,
+          29.268862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-64",
+        "name_ar": "مستشفى تأمين صحي - سنورس 64",
+        "name_en": "مستشفى تأمين صحي - سنورس",
+        "type": "insurance",
+        "phone": "084370739",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.752671,
+          29.170345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-65",
+        "name_ar": "مستشفى عام / طوارئ - الفيوم الجديدة 65",
+        "name_en": "مستشفى عام / طوارئ - الفيوم الجديدة",
+        "type": "emergency",
+        "phone": "084795689",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.760256,
+          29.327815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-66",
+        "name_ar": "وحدة رعاية أساسية - مدينة الفيوم 66",
+        "name_en": "وحدة رعاية أساسية - مدينة الفيوم",
+        "type": "phc",
+        "phone": "084644114",
+        "emergency": true,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.814623,
+          29.293382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-67",
+        "name_ar": "أخرى - أبشواي 67",
+        "name_en": "أخرى - أبشواي",
+        "type": "other",
+        "phone": "084401818",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.861146,
+          29.191338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-68",
+        "name_ar": "أخرى - طامية 68",
+        "name_en": "أخرى - طامية",
+        "type": "other",
+        "phone": "084860905",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.608089,
+          29.462944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-69",
+        "name_ar": "مستشفى أطفال - طامية 69",
+        "name_en": "مستشفى أطفال - طامية",
+        "type": "children",
+        "phone": "084433069",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.615867,
+          29.435484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-70",
+        "name_ar": "مستشفى تأمين صحي - أبشواي 70",
+        "name_en": "مستشفى تأمين صحي - أبشواي",
+        "type": "insurance",
+        "phone": "084434809",
+        "emergency": true,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.889917,
+          29.172022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-71",
+        "name_ar": "مستشفى تخصصي - الفيوم الجديدة 71",
+        "name_en": "مستشفى تخصصي - الفيوم الجديدة",
+        "type": "specialized",
+        "phone": "084235238",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.771648,
+          29.345847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-72",
+        "name_ar": "مستشفى تخصصي - segem 72",
+        "name_en": "مستشفى تخصصي - segem",
+        "type": "specialized",
+        "phone": "084377452",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.661669,
+          29.242873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-73",
+        "name_ar": "مستشفى أطفال - سنورس 73",
+        "name_en": "مستشفى أطفال - سنورس",
+        "type": "children",
+        "phone": "084385719",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.74818,
+          29.171943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-74",
+        "name_ar": "مستشفى تخصصي - إطسا 74",
+        "name_en": "مستشفى تخصصي - إطسا",
+        "type": "specialized",
+        "phone": "084214007",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.898686,
+          29.305286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-75",
+        "name_ar": "مستشفى تأمين صحي - أبشواي 75",
+        "name_en": "مستشفى تأمين صحي - أبشواي",
+        "type": "insurance",
+        "phone": "084372589",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.837572,
+          29.191096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-76",
+        "name_ar": "مستشفى تأمين صحي - مدينة الفيوم 76",
+        "name_en": "مستشفى تأمين صحي - مدينة الفيوم",
+        "type": "insurance",
+        "phone": "084728019",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.806584,
+          29.260342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-77",
+        "name_ar": "وحدة رعاية أساسية - مدينة الفيوم 77",
+        "name_en": "وحدة رعاية أساسية - مدينة الفيوم",
+        "type": "phc",
+        "phone": "084258889",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.83588,
+          29.356417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-78",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق 78",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084507704",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.54078,
+          29.355322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-79",
+        "name_ar": "مستشفى أطفال - الفيوم الجديدة 79",
+        "name_en": "مستشفى أطفال - الفيوم الجديدة",
+        "type": "children",
+        "phone": "084832520",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.846797,
+          29.343717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-80",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق 80",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084420353",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.57544,
+          29.351968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-81",
+        "name_ar": "مستشفى عام / طوارئ - الفيوم الجديدة 81",
+        "name_en": "مستشفى عام / طوارئ - الفيوم الجديدة",
+        "type": "emergency",
+        "phone": "084265574",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.841967,
+          29.329035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-82",
+        "name_ar": "مستشفى أطفال - الفيوم الجديدة 82",
+        "name_en": "مستشفى أطفال - الفيوم الجديدة",
+        "type": "children",
+        "phone": "084255943",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.834516,
+          29.396438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-83",
+        "name_ar": "أخرى - أبشواي 83",
+        "name_en": "أخرى - أبشواي",
+        "type": "other",
+        "phone": "084383249",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.849969,
+          29.190897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-84",
+        "name_ar": "مستشفى تأمين صحي - يوسف الصديق 84",
+        "name_en": "مستشفى تأمين صحي - يوسف الصديق",
+        "type": "insurance",
+        "phone": "084564489",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.519553,
+          29.400722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-85",
+        "name_ar": "مستشفى أطفال - طامية 85",
+        "name_en": "مستشفى أطفال - طامية",
+        "type": "children",
+        "phone": "084493016",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.578255,
+          29.407683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-86",
+        "name_ar": "مستشفى أطفال - الفيوم الجديدة 86",
+        "name_en": "مستشفى أطفال - الفيوم الجديدة",
+        "type": "children",
+        "phone": "084649607",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.76964,
+          29.33071
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-87",
+        "name_ar": "مستشفى أطفال - يوسف الصديق 87",
+        "name_en": "مستشفى أطفال - يوسف الصديق",
+        "type": "children",
+        "phone": "084821666",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.532999,
+          29.385459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-88",
+        "name_ar": "مستشفى عام / طوارئ - الفيوم الجديدة 88",
+        "name_en": "مستشفى عام / طوارئ - الفيوم الجديدة",
+        "type": "emergency",
+        "phone": "084214734",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.76902,
+          29.388324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-89",
+        "name_ar": "مستشفى تأمين صحي - إطسا 89",
+        "name_en": "مستشفى تأمين صحي - إطسا",
+        "type": "insurance",
+        "phone": "084299696",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.905613,
+          29.309587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-90",
+        "name_ar": "مستشفى تخصصي - الفيوم الجديدة 90",
+        "name_en": "مستشفى تخصصي - الفيوم الجديدة",
+        "type": "specialized",
+        "phone": "084238067",
+        "emergency": true,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.846502,
+          29.327239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-91",
+        "name_ar": "مستشفى عام / طوارئ - طامية 91",
+        "name_en": "مستشفى عام / طوارئ - طامية",
+        "type": "emergency",
+        "phone": "084929776",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.620502,
+          29.48548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-92",
+        "name_ar": "مستشفى عام / طوارئ - مدينة الفيوم 92",
+        "name_en": "مستشفى عام / طوارئ - مدينة الفيوم",
+        "type": "emergency",
+        "phone": "084659987",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.868989,
+          29.282748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-93",
+        "name_ar": "مستشفى عام / طوارئ - مدينة الفيوم 93",
+        "name_en": "مستشفى عام / طوارئ - مدينة الفيوم",
+        "type": "emergency",
+        "phone": "084560673",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.804886,
+          29.330188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-94",
+        "name_ar": "مستشفى تأمين صحي - سنورس 94",
+        "name_en": "مستشفى تأمين صحي - سنورس",
+        "type": "insurance",
+        "phone": "084669339",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.756839,
+          29.177022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-95",
+        "name_ar": "مستشفى تخصصي - الفيوم الجديدة 95",
+        "name_en": "مستشفى تخصصي - الفيوم الجديدة",
+        "type": "specialized",
+        "phone": "084859872",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.811008,
+          29.386156
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-96",
+        "name_ar": "مستشفى أطفال - سنورس 96",
+        "name_en": "مستشفى أطفال - سنورس",
+        "type": "children",
+        "phone": "084979292",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.774816,
+          29.178234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-97",
+        "name_ar": "أخرى - إطسا 97",
+        "name_en": "أخرى - إطسا",
+        "type": "other",
+        "phone": "084234459",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.904315,
+          29.261986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-98",
+        "name_ar": "وحدة رعاية أساسية - يوسف الصديق 98",
+        "name_en": "وحدة رعاية أساسية - يوسف الصديق",
+        "type": "phc",
+        "phone": "084255795",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.57285,
+          29.404874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-99",
+        "name_ar": "مستشفى تخصصي - إطسا 99",
+        "name_en": "مستشفى تخصصي - إطسا",
+        "type": "specialized",
+        "phone": "084235861",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.927274,
+          29.231849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-100",
+        "name_ar": "مستشفى تخصصي - أبشواي 100",
+        "name_en": "مستشفى تخصصي - أبشواي",
+        "type": "specialized",
+        "phone": "084970334",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.862034,
+          29.187799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-101",
+        "name_ar": "مستشفى عام / طوارئ - سنورس 101",
+        "name_en": "مستشفى عام / طوارئ - سنورس",
+        "type": "emergency",
+        "phone": "084552667",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.764115,
+          29.151306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-102",
+        "name_ar": "مستشفى عام / طوارئ - إطسا 102",
+        "name_en": "مستشفى عام / طوارئ - إطسا",
+        "type": "emergency",
+        "phone": "084777323",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.876612,
+          29.233355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-103",
+        "name_ar": "أخرى - segem 103",
+        "name_en": "أخرى - segem",
+        "type": "other",
+        "phone": "084265176",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.683146,
+          29.207857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-104",
+        "name_ar": "مستشفى عام / طوارئ - إطسا 104",
+        "name_en": "مستشفى عام / طوارئ - إطسا",
+        "type": "emergency",
+        "phone": "084979932",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.928599,
+          29.301278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-105",
+        "name_ar": "وحدة رعاية أساسية - مدينة الفيوم 105",
+        "name_en": "وحدة رعاية أساسية - مدينة الفيوم",
+        "type": "phc",
+        "phone": "084623998",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.806105,
+          29.337184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-106",
+        "name_ar": "مستشفى أطفال - أبشواي 106",
+        "name_en": "مستشفى أطفال - أبشواي",
+        "type": "children",
+        "phone": "084365799",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.921531,
+          29.152173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-107",
+        "name_ar": "مستشفى تأمين صحي - سنورس 107",
+        "name_en": "مستشفى تأمين صحي - سنورس",
+        "type": "insurance",
+        "phone": "084939289",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.771484,
+          29.238251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-108",
+        "name_ar": "مستشفى عام / طوارئ - يوسف الصديق 108",
+        "name_en": "مستشفى عام / طوارئ - يوسف الصديق",
+        "type": "emergency",
+        "phone": "084538717",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.535605,
+          29.352694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-109",
+        "name_ar": "مستشفى أطفال - الفيوم الجديدة 109",
+        "name_en": "مستشفى أطفال - الفيوم الجديدة",
+        "type": "children",
+        "phone": "084486595",
+        "emergency": true,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.833212,
+          29.370122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-110",
+        "name_ar": "مستشفى أطفال - أبشواي 110",
+        "name_en": "مستشفى أطفال - أبشواي",
+        "type": "children",
+        "phone": "084436177",
+        "emergency": false,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.880164,
+          29.151928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-111",
+        "name_ar": "مستشفى عام / طوارئ - سنورس 111",
+        "name_en": "مستشفى عام / طوارئ - سنورس",
+        "type": "emergency",
+        "phone": "084530480",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.757146,
+          29.181509
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-112",
+        "name_ar": "مستشفى تخصصي - أبشواي 112",
+        "name_en": "مستشفى تخصصي - أبشواي",
+        "type": "specialized",
+        "phone": "084918581",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.854649,
+          29.160115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-113",
+        "name_ar": "وحدة رعاية أساسية - سنورس 113",
+        "name_en": "وحدة رعاية أساسية - سنورس",
+        "type": "phc",
+        "phone": "084908868",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.742291,
+          29.156037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-114",
+        "name_ar": "مستشفى عام / طوارئ - مدينة الفيوم 114",
+        "name_en": "مستشفى عام / طوارئ - مدينة الفيوم",
+        "type": "emergency",
+        "phone": "084854957",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.802463,
+          29.345273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-115",
+        "name_ar": "مستشفى تخصصي - الفيوم الجديدة 115",
+        "name_en": "مستشفى تخصصي - الفيوم الجديدة",
+        "type": "specialized",
+        "phone": "084926245",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "الفيوم الجديدة، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.796999,
+          29.382043
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-116",
+        "name_ar": "مستشفى عام / طوارئ - أبشواي 116",
+        "name_en": "مستشفى عام / طوارئ - أبشواي",
+        "type": "emergency",
+        "phone": "084315394",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.885609,
+          29.124232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-117",
+        "name_ar": "مستشفى تخصصي - سنورس 117",
+        "name_en": "مستشفى تخصصي - سنورس",
+        "type": "specialized",
+        "phone": "084604963",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.782259,
+          29.225564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-118",
+        "name_ar": "مستشفى تأمين صحي - سنورس 118",
+        "name_en": "مستشفى تأمين صحي - سنورس",
+        "type": "insurance",
+        "phone": "084844465",
+        "emergency": false,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.792625,
+          29.182304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-119",
+        "name_ar": "مستشفى تأمين صحي - طامية 119",
+        "name_en": "مستشفى تأمين صحي - طامية",
+        "type": "insurance",
+        "phone": "084786785",
+        "emergency": true,
+        "services": "التأمين الصحي، العيادات الخارجية، التحاليل، الأشعة",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.612487,
+          29.490925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-120",
+        "name_ar": "مستشفى أطفال - طامية 120",
+        "name_en": "مستشفى أطفال - طامية",
+        "type": "children",
+        "phone": "084778020",
+        "emergency": true,
+        "services": "أطفال، تحصينات، تغذية أطفال، حضانات",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.653026,
+          29.444849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-121",
+        "name_ar": "أخرى - مدينة الفيوم 121",
+        "name_en": "أخرى - مدينة الفيوم",
+        "type": "other",
+        "phone": "084520768",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.882421,
+          29.327976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-122",
+        "name_ar": "وحدة رعاية أساسية - سنورس 122",
+        "name_en": "وحدة رعاية أساسية - سنورس",
+        "type": "phc",
+        "phone": "084915995",
+        "emergency": true,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.737679,
+          29.248741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-123",
+        "name_ar": "وحدة رعاية أساسية - يوسف الصديق 123",
+        "name_en": "وحدة رعاية أساسية - يوسف الصديق",
+        "type": "phc",
+        "phone": "084632390",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.520495,
+          29.407077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-124",
+        "name_ar": "وحدة رعاية أساسية - يوسف الصديق 124",
+        "name_en": "وحدة رعاية أساسية - يوسف الصديق",
+        "type": "phc",
+        "phone": "084274112",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.503394,
+          29.356934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-125",
+        "name_ar": "مستشفى عام / طوارئ - أبشواي 125",
+        "name_en": "مستشفى عام / طوارئ - أبشواي",
+        "type": "emergency",
+        "phone": "084403203",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.895772,
+          29.12105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-126",
+        "name_ar": "مستشفى عام / طوارئ - إطسا 126",
+        "name_en": "مستشفى عام / طوارئ - إطسا",
+        "type": "emergency",
+        "phone": "084612420",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "إطسا، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.958791,
+          29.256597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-127",
+        "name_ar": "وحدة رعاية أساسية - يوسف الصديق 127",
+        "name_en": "وحدة رعاية أساسية - يوسف الصديق",
+        "type": "phc",
+        "phone": "084901080",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.511601,
+          29.339091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-128",
+        "name_ar": "وحدة رعاية أساسية - أبشواي 128",
+        "name_en": "وحدة رعاية أساسية - أبشواي",
+        "type": "phc",
+        "phone": "084500375",
+        "emergency": true,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.918674,
+          29.184826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-129",
+        "name_ar": "وحدة رعاية أساسية - سنورس 129",
+        "name_en": "وحدة رعاية أساسية - سنورس",
+        "type": "phc",
+        "phone": "084770269",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.764257,
+          29.161784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-130",
+        "name_ar": "وحدة رعاية أساسية - يوسف الصديق 130",
+        "name_en": "وحدة رعاية أساسية - يوسف الصديق",
+        "type": "phc",
+        "phone": "084749151",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.515939,
+          29.368194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-131",
+        "name_ar": "وحدة رعاية أساسية - مدينة الفيوم 131",
+        "name_en": "وحدة رعاية أساسية - مدينة الفيوم",
+        "type": "phc",
+        "phone": "084818843",
+        "emergency": false,
+        "services": "طب أسرة، تحصينات، رعاية حوامل، تخطيط أسرة، متابعة أطفال",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.863767,
+          29.329835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-132",
+        "name_ar": "مستشفى عام / طوارئ - يوسف الصديق 132",
+        "name_en": "مستشفى عام / طوارئ - يوسف الصديق",
+        "type": "emergency",
+        "phone": "084499441",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "يوسف الصديق، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.594681,
+          29.342961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-133",
+        "name_ar": "أخرى - segem 133",
+        "name_en": "أخرى - segem",
+        "type": "other",
+        "phone": "084429331",
+        "emergency": true,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.664703,
+          29.237233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-134",
+        "name_ar": "مستشفى عام / طوارئ - مدينة الفيوم 134",
+        "name_en": "مستشفى عام / طوارئ - مدينة الفيوم",
+        "type": "emergency",
+        "phone": "084843326",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.843933,
+          29.355601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-135",
+        "name_ar": "مستشفى تخصصي - سنورس 135",
+        "name_en": "مستشفى تخصصي - سنورس",
+        "type": "specialized",
+        "phone": "084935582",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.705009,
+          29.225279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-136",
+        "name_ar": "أخرى - مدينة الفيوم 136",
+        "name_en": "أخرى - مدينة الفيوم",
+        "type": "other",
+        "phone": "084895679",
+        "emergency": false,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "مدينة الفيوم، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.839554,
+          29.277706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-137",
+        "name_ar": "مستشفى عام / طوارئ - سنورس 137",
+        "name_en": "مستشفى عام / طوارئ - سنورس",
+        "type": "emergency",
+        "phone": "084518902",
+        "emergency": true,
+        "services": "الطوارئ، النساء والتوليد، الأطفال، الباطنة، الجراحة، العناية المركزة",
+        "address": "سنورس، محافظة الفيوم",
+        "openingHours": "24 ساعة"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.780449,
+          29.225281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-138",
+        "name_ar": "أخرى - segem 138",
+        "name_en": "أخرى - segem",
+        "type": "other",
+        "phone": "084717840",
+        "emergency": true,
+        "services": "عيادات عامة، تحويلات، إسعاف أولي",
+        "address": "segem، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.727697,
+          29.246599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-139",
+        "name_ar": "مستشفى تخصصي - طامية 139",
+        "name_en": "مستشفى تخصصي - طامية",
+        "type": "specialized",
+        "phone": "084512918",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "طامية، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.632504,
+          29.465435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fayoum-140",
+        "name_ar": "مستشفى تخصصي - أبشواي 140",
+        "name_en": "مستشفى تخصصي - أبشواي",
+        "type": "specialized",
+        "phone": "084267912",
+        "emergency": false,
+        "services": "نساء وتوليد، قيصرية، متابعة حمل، عقم",
+        "address": "أبشواي، محافظة الفيوم",
+        "openingHours": "8 صباحاً - 2 مساءً"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.902831,
+          29.15226
+        ]
+      }
+    }
+  ]
+}
