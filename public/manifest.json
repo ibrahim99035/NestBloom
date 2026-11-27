@@ -1,0 +1,21 @@
+{
+  "name": "نِست بلوم - NestBloom",
+  "short_name": "نست بلوم",
+  "description": "رحلتك في الحمل… يوم بيوم بجمال واهتمام",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfbf7",
+  "theme_color": "#10b981",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["health", "medical", "lifestyle"],
+  "scope": "/"
+}

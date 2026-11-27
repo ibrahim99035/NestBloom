@@ -22,6 +22,8 @@ import {
   BookOpen,
   Settings,
   Home as HomeIcon,
+  Download,
+  Info,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -61,6 +63,53 @@ export default function Home() {
   const [selectedFacility, setSelectedFacility] = useState<ReturnType<typeof filteredFacilities>[number] | null>(null);
   const [activeSection, setActiveSection] = useState<'home' | 'map'>('home');
   const router = useRouter();
+
+  // PWA Install state
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [canInstallPWA, setCanInstallPWA] = useState(false);
+  const [isPWAInstalled, setIsPWAInstalled] = useState(false);
+  const apkDownloadUrl = 'https://github.com/ibrahim99035/NestBloom/actions';
+
+  // Check if already installed as PWA
+  useEffect(() => {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsPWAInstalled(true);
+    }
+
+    // Listen for beforeinstallprompt event
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setCanInstallPWA(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    // Listen for app installed event
+    const handleAppInstalled = () => {
+      setIsPWAInstalled(true);
+      setCanInstallPWA(false);
+      setDeferredPrompt(null);
+    };
+
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallPWA = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setIsPWAInstalled(true);
+      setCanInstallPWA(false);
+    }
+    setDeferredPrompt(null);
+  };
 
   // Redirect to setup if pregnancy not configured yet
   useEffect(() => {
@@ -141,6 +190,51 @@ export default function Home() {
         <p className="text-sm text-[#453a32] mt-2">
           يبقى {daysLeft} يوم حتى الموعد المتوقع
         </p>
+      </div>
+
+      {/* Download / Install App */}
+      <div className="mb-6 bg-white rounded-3xl shadow-sm border border-[#f3e8dd] p-6">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-bold text-[#453a32] mb-2">حمل التطبيق</h3>
+            <p className="text-sm text-[#6b6b6b]">
+              ثبتي نِست بلوم على هاتفك للوصول السريع إلى toutes الميزات
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {/* PWA Install Button */}
+            <button
+              id="install-pwa-btn"
+              onClick={handleInstallPWA}
+              disabled={!canInstallPWA}
+              className={`flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-lg transition-all ${
+                canInstallPWA
+                  ? 'bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg shadow-emerald-200'
+                  : 'bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed'
+              }`}
+            >
+              <Download className="w-5 h-5" />
+              {isPWAInstalled ? 'تم التثبيت' : 'ثبتي التطبيق'}
+            </button>
+
+            {/* Direct APK Download */}
+            <a
+              href={apkDownloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-lg transition-all bg-[#f3e8dd] text-[#453a32] hover:bg-[#e7d5c3] shadow-sm"
+            >
+              <Download className="w-5 h-5" />
+              تحميل ملف APK
+            </a>
+          </div>
+        </div>
+        {canInstallPWA && !isPWAInstalled && (
+          <div className="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-100 text-sm text-emerald-700 flex items-center gap-2">
+            <Info className="w-4 h-4" />
+            <span>انقر على "ثبتي التطبيق" لإضافة نِست بلوم إلى شاشة Haupt</span>
+          </div>
+        )}
       </div>
 
       {/* Main content */}
