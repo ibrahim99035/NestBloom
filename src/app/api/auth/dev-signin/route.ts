@@ -26,10 +26,9 @@ export async function POST(req: Request) {
       maxAge,
     });
 
-    // NextAuth uses a "__Secure-" prefix whenever cookies are secure.
-    // Writing the unprefixed name silently breaks the session on HTTPS.
-    const useSecureCookies =
-      process.env.NEXTAUTH_URL?.startsWith('https://') || !!process.env.VERCEL;
+    // Match NextAuth's own cookie naming (derived from NEXTAUTH_URL), or the
+    // session cookie will be written under a name it never reads back.
+    const useSecureCookies = (process.env.NEXTAUTH_URL ?? '').startsWith('https://');
     const cookieName = useSecureCookies
       ? '__Secure-next-auth.session-token'
       : 'next-auth.session-token';

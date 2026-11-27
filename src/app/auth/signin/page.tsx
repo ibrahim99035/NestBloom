@@ -34,20 +34,22 @@ export default function SignInPage() {
     setError('');
     setIsQuickLoading(true);
     try {
-      // Full redirect so the SessionProvider picks up the new cookie.
-      await signIn('quick', { callbackUrl: '/' });
-    } catch {
+      // redirect:false keeps us independent of NEXTAUTH_URL; reload manually.
+      const result = await signIn('quick', { redirect: false });
+      if (result?.ok) {
+        window.location.href = '/';
+        return;
+      }
       // Fallback: server-issued session cookie for the same default account.
-      try {
-        const res = await fetch('/api/auth/dev-signin', { method: 'POST' });
-        if (res.ok) {
-          window.location.href = '/';
-          return;
-        }
-      } catch {
-        /* ignore */
+      const res = await fetch('/api/auth/dev-signin', { method: 'POST' });
+      if (res.ok) {
+        window.location.href = '/';
+        return;
       }
       setError('تعذّر تسجيل الدخول. حاولي مرة أخرى.');
+    } catch {
+      setError('حدث خطأ أثناء تسجيل الدخول.');
+    } finally {
       setIsQuickLoading(false);
     }
   };

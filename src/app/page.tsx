@@ -134,14 +134,23 @@ export default function Home() {
   const handleQuickSignIn = async () => {
     setIsQuickLoading(true);
     try {
-      // Full redirect so the SessionProvider picks up the new cookie.
-      await signIn('quick', { callbackUrl: '/' });
-    } catch (err) {
-      console.error('Quick sign-in failed:', err);
+      // redirect:false keeps us independent of NEXTAUTH_URL; we reload the
+      // page ourselves so the SessionProvider picks up the new cookie.
+      const result = await signIn('quick', { redirect: false });
+      if (result?.ok) {
+        window.location.href = '/';
+        return;
+      }
       // Fallback: server-issued session cookie for the same default account.
       const res = await fetch('/api/auth/dev-signin', { method: 'POST' });
-      if (res.ok) window.location.href = '/';
-      else setIsQuickLoading(false);
+      if (res.ok) {
+        window.location.href = '/';
+        return;
+      }
+      setIsQuickLoading(false);
+    } catch (err) {
+      console.error('Quick sign-in failed:', err);
+      setIsQuickLoading(false);
     }
   };
 

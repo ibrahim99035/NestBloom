@@ -47,8 +47,7 @@ export async function GET(req: Request) {
       maxAge: 30 * 24 * 60 * 60,
     });
 
-    const useSecureCookies =
-      process.env.NEXTAUTH_URL?.startsWith('https://') || !!process.env.VERCEL;
+    const useSecureCookies = (process.env.NEXTAUTH_URL ?? '').startsWith('https://');
     const cookieName = useSecureCookies
       ? '__Secure-next-auth.session-token'
       : 'next-auth.session-token';
