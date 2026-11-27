@@ -17,12 +17,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          package-manager: 'pnpm@10'
           cache: 'pnpm'
-
-      - name: Install pnpm via corepack
-        run: |
-          corepack enable
-          corepack prepare pnpm@10 --activate
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
