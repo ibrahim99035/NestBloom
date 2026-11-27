@@ -1,54 +1,51 @@
 import { NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt';
-import { cookies } from 'next/headers';
+import { encode } from 'next-auth/jwt';
+import { DEFAULT_ACCOUNT } from '@/lib/auth';
 
 /**
- * Dev-mode sign-in: creates a NextAuth session for a demo user.
- * Only for local development — remove in production.
+ * Instant sign-in without an email round-trip.
+ * Issues a NextAuth-compatible session cookie for the default account.
  */
 export async function POST(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const callbackUrl = searchParams.get('callbackUrl') || '/';
+    const secret = process.env.NEXTAUTH_SECRET;
+    if (!secret) {
+      return NextResponse.json({ error: 'NEXTAUTH_SECRET is not configured' }, { status: 500 });
+    }
 
-    const { signIn } = await import('next-auth/react');
-    // This is a server route, so we issue the session directly via NextAuth's
-    // internal JWT. Simpler approach: set a session cookie via next-auth.
-
-    // For NextAuth v4, we can create a session by calling the JWT encode.
-    // But the simplest dev approach: redirect to the main sign-in with Google,
-    // OR set a mock session. Here we issue a NextAuth-compatible session.
-
-    const { encode } = await import('next-auth/jwt');
-    const secret = process.env.NEXTAUTH_SECRET!;
-
+    const maxAge = 30 * 24 * 60 * 60;
     const token = await encode({
       secret,
       token: {
-        id: 'dev-user-1',
-        name: 'مستخدمة تجريبية',
-        email: 'dev@nestbloom.app',
-        picture: null,
+        id: DEFAULT_ACCOUNT.id,
+        name: DEFAULT_ACCOUNT.name,
+        email: DEFAULT_ACCOUNT.email,
         iat: Math.floor(Date.now() / 1000),
-        exp: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60, // 30 days
+        exp: Math.floor(Date.now() / 1000) + maxAge,
       },
-      maxAge: 30 * 24 * 60 * 60,
+      maxAge,
     });
 
-    const response = NextResponse.redirect(new URL(callbackUrl, req.url));
+    // NextAuth uses a "__Secure-" prefix whenever cookies are secure.
+    // Writing the unprefixed name silently breaks the session on HTTPS.
+    const useSecureCookies =
+      process.env.NEXTAUTH_URL?.startsWith('https://') || !!process.env.VERCEL;
+    const cookieName = useSecureCookies
+      ? '__Secure-next-auth.session-token'
+      : 'next-auth.session-token';
 
-    // Set the next-auth session cookie
-    response.cookies.set('next-auth.session-token', token, {
+    const response = NextResponse.json({ ok: true, user: DEFAULT_ACCOUNT });
+    response.cookies.set(cookieName, token, {
       httpOnly: true,
-      secure: process.env.NEXTAUTH_URL?.startsWith('https'),
+      secure: useSecureCookies,
       sameSite: 'lax',
       path: '/',
-      maxAge: 30 * 24 * 60 * 60,
+      maxAge,
     });
 
     return response;
   } catch (err) {
-    console.error('Dev sign-in error:', err);
-    return NextResponse.json({ error: 'Dev sign-in failed' }, { status: 500 });
+    console.error('Quick sign-in error:', err);
+    return NextResponse.json({ error: 'Quick sign-in failed' }, { status: 500 });
   }
 }

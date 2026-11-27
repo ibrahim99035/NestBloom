@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { useFacilitiesStore } from '@/stores/useFacilitiesStore';
 import FayoumHealthMap from '@/components/FayoumHealthMap';
 import FacilityBottomSheet from '@/components/FacilityBottomSheet';
@@ -8,7 +10,6 @@ import FacilityFilterChips from '@/components/FacilityFilterChips';
 
 export default function MapPage() {
   const {
-    facilities,
     isLoading,
     setFacilities,
     setLoading,
@@ -16,31 +17,43 @@ export default function MapPage() {
   } = useFacilitiesStore();
   const [selectedFacility, setSelectedFacility] = useState<ReturnType<typeof filteredFacilities>[number] | null>(null);
 
+  // Load facilities exactly once (guarded by the store).
   useEffect(() => {
-    if (isLoading) return;
+    if (useFacilitiesStore.getState().facilities.length > 0) return;
+    let cancelled = false;
+
+    setLoading(true);
     fetch('/data/fayoum-facilities.geojson')
       .then((res) => res.json())
       .then((geojson: any) => {
+        if (cancelled) return;
         const facs = geojson.features.map((f: any) => ({
           id: f.properties.id,
           properties: f.properties,
           geometry: f.geometry,
         }));
         setFacilities(facs);
-        setLoading(false);
+      })
+      .catch((err) => console.error('Failed to load facilities:', err))
+      .finally(() => {
+        if (!cancelled) setLoading(false);
       });
-    setLoading(true);
-  }, [setFacilities, setLoading, isLoading]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [setFacilities, setLoading]);
 
   return (
     <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
-          className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
+        <Link
+          href="/"
+          className="text-slate-500 hover:text-emerald-600 flex items-center gap-2 text-sm font-medium"
         >
-          retour
-        </button>
+          <ArrowRight className="w-4 h-4" />
+          العودة إلى الرئيسية
+        </Link>
       </nav>
 
       <div className="max-w-4xl mx-auto">
@@ -51,7 +64,7 @@ export default function MapPage() {
         <FacilityFilterChips />
 
         <div className="mt-4 bg-white rounded-3xl shadow-sm border border-[#f3e8dd] overflow-hidden">
-          <div className="h-[60vh]">
+          <div className="h-[60vh] min-h-[420px]">
             {isLoading ? (
               <div className="h-full flex items-center justify-center text-slate-500">
                 تحميل الخريطة…

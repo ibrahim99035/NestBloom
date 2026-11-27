@@ -2,50 +2,62 @@
 
 import { Activity, ArrowLeft, Heart, Star, Gift, Users } from 'lucide-react';
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
-
-const NEST_ITEMS = [
-  {
-    name: 'مستوى العش',
-    value: 'المستوى 3',
-    desc: 'أنت تتقدمين بشكل جميل',
-    icon: Activity,
-    colorClass: 'border-emerald-100 bg-emerald-50 text-emerald-600',
-  },
-  {
-    name: 'النقاط المجمعة',
-    value: '1,240 XP',
-    desc: 'من المهام اليومية والمتابعة',
-    icon: Star,
-    colorClass: 'border-amber-100 bg-amber-50 text-amber-600',
-  },
-  {
-    name: "أزياء الطفل",
-    value: '5 قطع',
-    desc: 'تم فك قفلها من الإنجازات',
-    icon: Gift,
-    colorClass: 'border-pink-100 bg-pink-50 text-pink-600',
-  },
-  {
-    name: 'الشريك',
-    value: 'غير مرتبط',
-    desc: 'يمكنك دعوة شريكك للمشاركة',
-    icon: Users,
-    colorClass: 'border-blue-100 bg-blue-50 text-blue-600',
-  },
-] as const;
+import Link from 'next/link';
 
 export default function NestPage() {
   const { currentWeek } = usePregnancyStore();
 
+  const level = Math.min(10, 1 + Math.floor(currentWeek / 4));
+  const xp = currentWeek * 30;
+  const outfits = Math.min(8, 1 + Math.floor(currentWeek / 5));
+
+  const nestItems = [
+    {
+      name: 'مستوى العش',
+      value: `المستوى ${level}`,
+      desc: 'أنت تتقدمين بشكل جميل',
+      icon: Activity,
+      colorClass: 'border-emerald-100 bg-emerald-50 text-emerald-600',
+    },
+    {
+      name: 'النقاط المجمعة',
+      value: `${xp.toLocaleString('en-US')} XP`,
+      desc: 'من المهام اليومية والمتابعة',
+      icon: Star,
+      colorClass: 'border-amber-100 bg-amber-50 text-amber-600',
+    },
+    {
+      name: 'أزياء الطفل',
+      value: `${outfits} قطع`,
+      desc: 'تم فك قفلها من الإنجازات',
+      icon: Gift,
+      colorClass: 'border-pink-100 bg-pink-50 text-pink-600',
+    },
+    {
+      name: 'الشريك',
+      value: 'غير مرتبط',
+      desc: 'يمكنك دعوة شريكك للمشاركة',
+      icon: Users,
+      colorClass: 'border-blue-100 bg-blue-50 text-blue-600',
+    },
+  ] as const;
+
+  const achievements = [
+    { label: 'أول يوم', unlocked: true },
+    { label: 'أسبوع كامل', unlocked: currentWeek >= 1 },
+    { label: 'شهر من المتابعة', unlocked: currentWeek >= 4 },
+    { label: 'نصف الطريق', unlocked: currentWeek >= 20 },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
+    <div className="min-h-screen bg-[#fdfbf7] p-4 pb-24 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
+        <Link
+          href="/"
           className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" /> العودة للرئيسية
-        </button>
+        </Link>
       </nav>
 
       <div className="max-w-lg mx-auto">
@@ -65,7 +77,7 @@ export default function NestPage() {
             <span className="text-6xl">🐦</span>
             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
               <span className="text-xs font-bold text-emerald-600 bg-white px-2 py-0.5 rounded-full border border-emerald-200">
-                المستوى 3
+                المستوى {level}
               </span>
             </div>
           </div>
@@ -73,8 +85,11 @@ export default function NestPage() {
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-8">
-          {NEST_ITEMS.map((item) => (
-            <div key={item.name} className={`p-4 rounded-2xl border flex items-center gap-4 ${item.colorClass}`}>
+          {nestItems.map((item) => (
+            <div
+              key={item.name}
+              className={`p-4 rounded-2xl border flex items-center gap-4 ${item.colorClass}`}
+            >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white shadow-sm">
                 <item.icon className="w-5 h-5" />
               </div>
@@ -93,12 +108,7 @@ export default function NestPage() {
             الإنجازات
           </h3>
           <div className="grid grid-cols-4 gap-3">
-            {[
-              { label: 'أول يوم', unlocked: true },
-              { label: 'أسبوع كامل', unlocked: true },
-              { label: 'شهر من المتابعة', unlocked: false },
-              { label: 'نصف الطريق', unlocked: false },
-            ].map((b) => (
+            {achievements.map((b) => (
               <div
                 key={b.label}
                 className={`flex flex-col items-center gap-2 p-3 rounded-xl border ${
@@ -107,12 +117,14 @@ export default function NestPage() {
                     : 'border-slate-100 bg-slate-50 text-slate-300'
                 }`}
               >
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  b.unlocked ? 'bg-emerald-200' : 'bg-slate-200'
-                }`}>
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                    b.unlocked ? 'bg-emerald-200' : 'bg-slate-200'
+                  }`}
+                >
                   <span className="text-xs">{b.unlocked ? '✓' : '?'}</span>
                 </div>
-                <span className="text-xs font-medium">{b.label}</span>
+                <span className="text-xs font-medium text-center">{b.label}</span>
               </div>
             ))}
           </div>

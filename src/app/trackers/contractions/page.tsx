@@ -2,27 +2,41 @@
 
 import { useState, useEffect } from 'react';
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
-import { Timer, Clock, CheckCircle, ArrowLeft, Activity } from 'lucide-react';
+import { Clock, ArrowLeft, Activity } from 'lucide-react';
+import Link from 'next/link';
 
 interface Contraction {
-  start: string;
-  end: string | null;
-  duration: number;
+  start: number; // epoch ms
+  end: number | null; // epoch ms
+  duration: number; // seconds
 }
+
+const formatTime = (ms: number) =>
+  new Date(ms).toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
 export default function ContractionTimerPage() {
   const { currentWeek } = usePregnancyStore();
   const [isTiming, setIsTiming] = useState(false);
-  const [startTime, setStartTime] = useState<Date | null>(null);
+  const [startTime, setStartTime] = useState<number | null>(null);
   const [timer, setTimer] = useState(0);
   const [contractions, setContractions] = useState<Contraction[]>([]);
-  const [interval, setIntervalState] = useState(0);
 
   useEffect(() => {
     const saved = localStorage.getItem('nestbloom-contractions');
     if (saved) {
       try {
-        setContractions(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          // Ignore legacy entries that stored localized time strings.
+          setContractions(
+            parsed.filter(
+              (c: Contraction) => typeof c.start === 'number' && Number.isFinite(c.start)
+            )
+          );
+        }
       } catch {
         // ignore
       }
@@ -30,72 +44,64 @@ export default function ContractionTimerPage() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('nestbloom-contractions', JSON.stringify(contractions));
+    try {
+      localStorage.setItem('nestbloom-contractions', JSON.stringify(contractions));
+    } catch {
+      // storage full / unavailable — keep the in-memory state working
+    }
   }, [contractions]);
 
+  // Derive the elapsed time from the timestamp instead of counting ticks,
+  // so the timer stays accurate when the tab is backgrounded.
   useEffect(() => {
-    if (!isTiming || !startTime) return;
-    const t = setInterval(() => {
-      setTimer((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(t);
+    if (!isTiming || startTime === null) return;
+    const update = () => setTimer(Math.floor((Date.now() - startTime) / 1000));
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
   }, [isTiming, startTime]);
 
   const startContraction = () => {
-    setStartTime(new Date());
+    setStartTime(Date.now());
     setTimer(0);
     setIsTiming(true);
   };
 
   const endContraction = () => {
-    if (!startTime) return;
-    const duration = Math.floor((Date.now() - startTime.getTime()) / 1000);
+    if (startTime === null) return;
+    const end = Date.now();
     const newContraction: Contraction = {
-      start: startTime.toLocaleTimeString('ar-SA', {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
-      end: new Date().toLocaleTimeString('ar-SA', {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
-      duration,
+      start: startTime,
+      end,
+      duration: Math.floor((end - startTime) / 1000),
     };
     setContractions((prev) => [newContraction, ...prev].slice(0, 50));
     setIsTiming(false);
     setStartTime(null);
     setTimer(0);
-
-    if (contractions.length > 0) {
-      const prevStart = new Date();
-      prevStart.setHours(
-        parseInt(contractions[0].start.split(':')[0]),
-        parseInt(contractions[0].start.split(':')[1])
-      );
-      const currStart = new Date();
-      currStart.setHours(
-        parseInt(newContraction.start.split(':')[0]),
-        parseInt(newContraction.start.split(':')[1])
-      );
-      const diffMin = Math.round((currStart.getTime() - prevStart.getTime()) / (1000 * 60));
-      setIntervalState(diffMin);
-    } else {
-      setIntervalState(0);
-    }
   };
 
   const minutes = Math.floor(timer / 60);
   const seconds = timer % 60;
 
+  // Gaps between consecutive contractions (list is newest-first).
+  const gaps = contractions.slice(0, -1).map((c, i) =>
+    Math.max(0, Math.round((c.start - contractions[i + 1].start) / 60000))
+  );
+  const avgInterval = gaps.length
+    ? Math.round(gaps.reduce((a, b) => a + b, 0) / gaps.length)
+    : 0;
+  const lastInterval = gaps.length ? gaps[0] : 0;
+
   return (
     <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
+        <Link
+          href="/"
           className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" /> العودة للرئيسية
-        </button>
+        </Link>
       </nav>
 
       <div className="max-w-lg mx-auto">
@@ -118,7 +124,7 @@ export default function ContractionTimerPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {!isTiming ? (
               <button
                 onClick={startContraction}
@@ -153,18 +159,22 @@ export default function ContractionTimerPage() {
           ) : (
             <div className="space-y-3">
               {contractions.map((c, i) => (
-                <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-slate-50/50 border border-slate-100">
+                <div
+                  key={c.start}
+                  className="flex items-center justify-between p-3 rounded-xl bg-slate-50/50 border border-slate-100"
+                >
                   <div>
                     <p className="text-sm font-medium text-slate-800">
-                      #{i + 1} — {c.start}
+                      #{contractions.length - i} — {formatTime(c.start)}
                     </p>
                     <p className="text-xs text-slate-500">
-                      المدة: {Math.floor(c.duration / 60)}:{String(c.duration % 60).padStart(2, '0')} دقيقة
+                      المدة: {Math.floor(c.duration / 60)}:
+                      {String(c.duration % 60).padStart(2, '0')} دقيقة
                     </p>
                   </div>
-                  {c.end && (
+                  {c.end !== null && (
                     <span className="text-xs text-emerald-600 font-medium bg-emerald-50 px-2 py-1 rounded">
-                      انتهت {c.end}
+                      انتهت {formatTime(c.end)}
                     </span>
                   )}
                 </div>
@@ -172,13 +182,16 @@ export default function ContractionTimerPage() {
             </div>
           )}
 
-          {interval > 0 && (
+          {gaps.length > 0 && (
             <div className="mt-6 pt-6 border-t border-slate-200 p-4 rounded-2xl bg-[#f3e8dd]">
               <p className="text-sm text-slate-800 font-medium">
-                الفاصل المتوسط: {interval} دقيقة
+                الفاصل الأخير: {lastInterval} دقيقة
               </p>
-              {interval <= 5 && (
-                <p className="text-xs text-red-600 font-medium mt-1">
+              <p className="text-xs text-slate-600 mt-1">
+                متوسط الفاصل: {avgInterval} دقيقة
+              </p>
+              {avgInterval > 0 && avgInterval <= 5 && (
+                <p className="text-xs text-red-600 font-medium mt-2">
                   ⚠️ الانقباضات متقاربة — راجعي الطبيب إذا استمرت
                 </p>
               )}

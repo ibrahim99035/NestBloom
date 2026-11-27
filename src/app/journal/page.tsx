@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
-import { ArrowLeft, BookOpen, Image, Plus, Trash2, Clock } from 'lucide-react';
+import { ArrowLeft, BookOpen, Plus, Trash2, Clock } from 'lucide-react';
+import Link from 'next/link';
 
 interface JournalEntry {
   id: string;
@@ -19,6 +20,43 @@ const MOOD_LABELS: Record<number, { label: string; color: string }> = {
   4: { label: 'جيد', color: '#84cc16' },
   5: { label: 'ممتاز', color: '#22c55e' },
 };
+
+const MAX_IMAGE_DIMENSION = 900;
+
+/**
+ * Blob URLs stop working after a reload, so photos are stored as compressed
+ * data URLs instead. Downscaling keeps localStorage under its quota.
+ */
+function fileToCompressedDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('read failed'));
+    reader.onload = () => {
+      const src = String(reader.result);
+      const img = new window.Image();
+      img.onerror = () => resolve(src);
+      img.onload = () => {
+        try {
+          const scale = Math.min(
+            1,
+            MAX_IMAGE_DIMENSION / Math.max(img.width, img.height)
+          );
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.max(1, Math.round(img.width * scale));
+          canvas.height = Math.max(1, Math.round(img.height * scale));
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return resolve(src);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          resolve(canvas.toDataURL('image/jpeg', 0.72));
+        } catch {
+          resolve(src);
+        }
+      };
+      img.src = src;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function JournalPage() {
   const { currentWeek } = usePregnancyStore();
@@ -39,7 +77,11 @@ export default function JournalPage() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('nestbloom-journal', JSON.stringify(entries));
+    try {
+      localStorage.setItem('nestbloom-journal', JSON.stringify(entries));
+    } catch (err) {
+      console.warn('Journal storage is full; entry kept in memory only.', err);
+    }
   }, [entries]);
 
   const saveEntry = () => {
@@ -64,12 +106,12 @@ export default function JournalPage() {
   return (
     <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
+        <Link
+          href="/"
           className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" /> العودة للرئيسية
-        </button>
+        </Link>
       </nav>
 
       <div className="max-w-2xl mx-auto">
@@ -137,11 +179,19 @@ export default function JournalPage() {
                     input.type = 'file';
                     input.accept = 'image/*';
                     input.multiple = true;
-                    input.onchange = (e) => {
-                      const files = Array.from((e.target as HTMLInputElement).files ?? []);
-                      files.forEach((file) => {
-                        setPhotos((prev) => [...prev, URL.createObjectURL(file)]);
-                      });
+                    input.onchange = async (e) => {
+                      const files = Array.from(
+                        (e.target as HTMLInputElement).files ?? []
+                      );
+                      for (const file of files) {
+                        if (!file.type.startsWith('image/')) continue;
+                        try {
+                          const dataUrl = await fileToCompressedDataUrl(file);
+                          setPhotos((prev) => [...prev, dataUrl]);
+                        } catch {
+                          // skip unreadable file
+                        }
+                      }
                     };
                     input.click();
                   }}

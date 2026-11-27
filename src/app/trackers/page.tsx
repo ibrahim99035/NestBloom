@@ -2,6 +2,7 @@
 
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
 import { Activity, ArrowLeft, Baby, Clock, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 const TRACKERS = [
   {
@@ -33,12 +34,12 @@ export default function TrackersPage() {
   return (
     <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
+        <Link
+          href="/"
           className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" /> العودة للرئيسية
-        </button>
+        </Link>
       </nav>
 
       <div className="max-w-lg mx-auto">

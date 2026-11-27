@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { signOut } from 'next-auth/react';
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
 import { ArrowLeft, User, Calendar, Bell, Lock, LogOut, Mail, Edit } from 'lucide-react';
+import Link from 'next/link';
 
 export default function SettingsPage() {
   const {
@@ -19,8 +21,13 @@ export default function SettingsPage() {
   const [newDate, setNewDate] = useState('');
 
   useEffect(() => {
-    if (dueDate) setNewDate(dueDate.toISOString().split('T')[0]);
-    else if (lmpDate) setNewDate(lmpDate.toISOString().split('T')[0]);
+    const value = dueDate || lmpDate;
+    if (!value) {
+      setNewDate('');
+      return;
+    }
+    const date = new Date(value);
+    setNewDate(isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10));
   }, [dueDate, lmpDate]);
 
   const savePregnancy = () => {
@@ -33,12 +40,12 @@ export default function SettingsPage() {
   return (
     <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
+        <Link
+          href="/"
           className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" /> العودة للرئيسية
-        </button>
+        </Link>
       </nav>
 
       <div className="max-w-lg mx-auto">
@@ -63,7 +70,9 @@ export default function SettingsPage() {
                 <div className="flex justify-between">
                   <span className="text-slate-500">الموعد المتوقع:</span>
                   <span className="font-medium text-slate-800">
-                    {dueDate ? dueDate.toLocaleDateString('ar-SA') : 'غير مضبوط'}
+                    {dueDate
+                      ? new Date(dueDate).toLocaleDateString('ar-EG')
+                      : 'غير مضبوط'}
                   </span>
                 </div>
                 <div className="flex justify-between">
@@ -159,12 +168,27 @@ export default function SettingsPage() {
               </div>
             </div>
 
+            <div className="p-4 rounded-2xl bg-white border border-slate-100">
+              <h3 className="text-sm font-bold text-slate-800 mb-3">الحساب</h3>
+              <button
+                onClick={() => signOut({ callbackUrl: '/' })}
+                className="text-sm text-slate-600 flex items-center gap-1 hover:text-emerald-600 transition-all"
+              >
+                <User className="w-4 h-4" />
+                تسجيل الخروج
+              </button>
+            </div>
+
             <div className="p-4 rounded-2xl bg-red-50 border border-red-100">
               <h3 className="text-sm font-bold text-red-800 mb-3">منطقة الخطر</h3>
               <button
                 onClick={() => {
                   if (window.confirm('هل أنت متأكدة من إعادة ضبط جميع البيانات؟')) {
                     reset();
+                    Object.keys(localStorage)
+                      .filter((key) => key.startsWith('nestbloom'))
+                      .forEach((key) => localStorage.removeItem(key));
+                    window.location.href = '/';
                   }
                 }}
                 className="text-sm text-red-600 flex items-center gap-1 hover:underline"

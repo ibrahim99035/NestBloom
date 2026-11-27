@@ -9,7 +9,7 @@ type Mode = 'dueDate' | 'lmpDate';
 
 export default function SetupPage() {
   const router = useRouter();
-  const { setDates, setLMPDate, dueDate, lmpDate } = usePregnancyStore();
+  const { setDates, setLMPDate, setRiskFlags, dueDate, lmpDate } = usePregnancyStore();
   const [mode, setMode] = useState<Mode>('dueDate');
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [isHighRisk, setIsHighRisk] = useState(false);
@@ -43,8 +43,8 @@ export default function SetupPage() {
     } else {
       setLMPDate(date);
     }
+    setRiskFlags(isHighRisk, isMultiple);
 
-    // Note: isHighRisk / isMultiple stored separately for now
     router.push('/');
   };
 
@@ -62,7 +62,7 @@ export default function SetupPage() {
             <Baby className="w-6 h-6 text-emerald-600" />
           </div>
           <h1 className="text-2xl font-bold text-[#453a32] mb-2">بدء رحلتك</h1>
-          <p className="text-[#6b6b6b]">こんにちわ — مرحباً بك في نِست بلوم 🌸</p>
+          <p className="text-[#6b6b6b]">مرحباً بك في نِست بلوم 🌸</p>
         </div>
 
         {error && (
@@ -139,6 +139,14 @@ export default function SetupPage() {
           >
             <ArrowRight className="w-5 h-5" />
             بدء الرحلة
+          </button>
+
+          <button
+            type="button"
+            onClick={() => router.push('/')}
+            className="w-full py-2 text-sm text-[#6b6b6b] hover:text-emerald-600 transition-all"
+          >
+            تخطي الآن
           </button>
         </form>
 

@@ -15,9 +15,17 @@ export interface PregnancyDates {
   setDates: (dueDate: Date | null, lmpDate: Date | null) => void;
   setLMPDate: (lmpDate: Date) => void;
   setProgress: (week: number, day: number) => void;
+  setRiskFlags: (isHighRisk: boolean, isMultiple: boolean) => void;
   calculateStage: () => PregnancyStage;
   reset: () => void;
 }
+
+const stageFromWeek = (week: number): PregnancyStage => {
+  if (week <= 13) return 'first';
+  if (week <= 27) return 'second';
+  if (week <= 40) return 'third';
+  return 'postpartum';
+};
 
 const calculateProgress = (dueDate: Date, lmpDate: Date | null = null) => {
   const now = new Date();
@@ -38,11 +46,11 @@ const calculateProgress = (dueDate: Date, lmpDate: Date | null = null) => {
     diffDays = 280;
   }
 
-  const weeksRemaining = Math.floor(diffDays / 7);
-  const daysRemaining = diffDays % 7;
-  const currentWeek = Math.max(0, 40 - weeksRemaining);
-  const currentDay = Math.max(0, 7 - daysRemaining - 1);
-  const gestationalProgress = Math.min(40, Math.max(0, currentWeek + currentDay / 7));
+  // Days already pregnant = 280 - days remaining until due date.
+  const daysPregnant = Math.max(0, Math.min(280, 280 - diffDays));
+  const currentWeek = Math.floor(daysPregnant / 7);
+  const currentDay = daysPregnant % 7;
+  const gestationalProgress = daysPregnant / 7; // 0 → 40 weeks
 
   return { currentWeek, currentDay, gestationalProgress, diffDays };
 };
@@ -97,7 +105,7 @@ export const usePregnancyStore = create<PregnancyDates>()(
           currentWeek,
           currentDay,
           gestationalProgress,
-          stage: get().calculateStage(),
+          stage: stageFromWeek(currentWeek),
         });
       },
 
@@ -127,7 +135,7 @@ export const usePregnancyStore = create<PregnancyDates>()(
           currentWeek,
           currentDay,
           gestationalProgress,
-          stage: get().calculateStage(),
+          stage: stageFromWeek(currentWeek),
         });
       },
 
@@ -136,12 +144,10 @@ export const usePregnancyStore = create<PregnancyDates>()(
         set({ currentWeek: week, currentDay: day, gestationalProgress });
       },
 
+      setRiskFlags: (isHighRisk, isMultiple) => set({ isHighRisk, isMultiple }),
+
       calculateStage: () => {
-        const { currentWeek } = get();
-        if (currentWeek <= 13) return 'first';
-        if (currentWeek <= 27) return 'second';
-        if (currentWeek <= 40) return 'third';
-        return 'postpartum';
+        return stageFromWeek(get().currentWeek);
       },
 
       reset: () => {
@@ -159,7 +165,17 @@ export const usePregnancyStore = create<PregnancyDates>()(
     }),
     {
       name: 'nestbloom-pregnancy',
-      storage: createJSONStorage(() => localStorage),
+      // Dates are JSON-serialized as strings by localStorage. Revive them so
+      // code can keep calling Date methods after a reload.
+      storage: createJSONStorage(() => localStorage, {
+        reviver: (key, value) => {
+          if ((key === 'dueDate' || key === 'lmpDate') && typeof value === 'string') {
+            const date = new Date(value);
+            return isNaN(date.getTime()) ? null : date;
+          }
+          return value;
+        },
+      }),
     }
   )
 );

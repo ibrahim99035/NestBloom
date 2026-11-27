@@ -47,10 +47,16 @@ export async function GET(req: Request) {
       maxAge: 30 * 24 * 60 * 60,
     });
 
+    const useSecureCookies =
+      process.env.NEXTAUTH_URL?.startsWith('https://') || !!process.env.VERCEL;
+    const cookieName = useSecureCookies
+      ? '__Secure-next-auth.session-token'
+      : 'next-auth.session-token';
+
     const response = NextResponse.redirect(new URL('/', req.url));
-    response.cookies.set('next-auth.session-token', jwt, {
+    response.cookies.set(cookieName, jwt, {
       httpOnly: true,
-      secure: process.env.NEXTAUTH_URL?.startsWith('https'),
+      secure: useSecureCookies,
       sameSite: 'lax',
       path: '/',
       maxAge: 30 * 24 * 60 * 60,

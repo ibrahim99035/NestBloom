@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { useSession, signIn } from 'next-auth/react';
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
 import { useFacilitiesStore } from '@/stores/useFacilitiesStore';
 import FayoumHealthMap from '@/components/FayoumHealthMap';
@@ -42,8 +41,22 @@ const NAV_ITEMS = [
   { name: 'الإعدادات', href: '/settings', icon: Settings },
 ] as const;
 
+const localDateKey = (date = new Date()) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+};
+
+const currentGreeting = () => {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'صباح الخير 🌸';
+  if (hour < 18) return 'مساء الخير 🌸';
+  return 'مساء الخير 🌸';
+};
+
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const {
     currentWeek,
     currentDay,
@@ -53,38 +66,84 @@ export default function Home() {
     lmpDate,
   } = usePregnancyStore();
   const {
-    facilities,
     isLoading,
     setFacilities,
     setLoading,
     filteredFacilities,
   } = useFacilitiesStore();
   const [selectedFacility, setSelectedFacility] = useState<ReturnType<typeof filteredFacilities>[number] | null>(null);
-  const [activeSection, setActiveSection] = useState<'home' | 'map'>('home');
-  const router = useRouter();
+  const [completedQuests, setCompletedQuests] = useState<Set<string>>(new Set());
+  const [isQuickLoading, setIsQuickLoading] = useState(false);
+  const questsHydrated = useRef(false);
 
-  // Redirect to setup if pregnancy not configured yet
+  // Restore today's completed quests (they reset each new day).
   useEffect(() => {
-    if (session && !dueDate && !lmpDate) {
-      router.push('/setup');
+    try {
+      const raw = localStorage.getItem('nestbloom-quests');
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved?.date === localDateKey() && Array.isArray(saved.done)) {
+          setCompletedQuests(new Set(saved.done as string[]));
+        }
+      }
+    } catch {
+      // ignore malformed storage
     }
-  }, [session, dueDate, lmpDate, router]);
+    questsHydrated.current = true;
+  }, []);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (!questsHydrated.current) return;
+    try {
+      localStorage.setItem(
+        'nestbloom-quests',
+        JSON.stringify({ date: localDateKey(), done: Array.from(completedQuests) })
+      );
+    } catch {
+      // storage full / unavailable — keep the in-memory state working
+    }
+  }, [completedQuests]);
+
+  // Load facilities exactly once (guarded by the store).
+  useEffect(() => {
+    if (useFacilitiesStore.getState().facilities.length > 0) return;
+    let cancelled = false;
+
+    setLoading(true);
     fetch('/data/fayoum-facilities.geojson')
       .then((res) => res.json())
       .then((geojson: any) => {
+        if (cancelled) return;
         const facs = geojson.features.map((f: any) => ({
           id: f.properties.id,
           properties: f.properties,
           geometry: f.geometry,
         }));
         setFacilities(facs);
-        setLoading(false);
+      })
+      .catch((err) => console.error('Failed to load facilities:', err))
+      .finally(() => {
+        if (!cancelled) setLoading(false);
       });
-    setLoading(true);
-  }, [setFacilities, setLoading, isLoading]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [setFacilities, setLoading]);
+
+  const handleQuickSignIn = async () => {
+    setIsQuickLoading(true);
+    try {
+      // Full redirect so the SessionProvider picks up the new cookie.
+      await signIn('quick', { callbackUrl: '/' });
+    } catch (err) {
+      console.error('Quick sign-in failed:', err);
+      // Fallback: server-issued session cookie for the same default account.
+      const res = await fetch('/api/auth/dev-signin', { method: 'POST' });
+      if (res.ok) window.location.href = '/';
+      else setIsQuickLoading(false);
+    }
+  };
 
   const toggleQuest = (id: string) => {
     setCompletedQuests((prev) => {
@@ -95,9 +154,18 @@ export default function Home() {
     });
   };
 
-  const [completedQuests, setCompletedQuests] = useState<Set<string>>(new Set());
+  const daysLeft = Math.max(0, Math.round(280 - gestationalProgress * 7));
 
-  const daysLeft = Math.max(0, 280 - Math.floor(gestationalProgress * 7));
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#fdfbf7]">
+        <div className="text-center text-[#6b6b6b]">
+          <div className="w-10 h-10 border-4 border-emerald-200 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4" />
+          جارٍ التحميل…
+        </div>
+      </div>
+    );
+  }
 
   if (!session) {
     return (
@@ -106,9 +174,14 @@ export default function Home() {
           <div className="text-center">
             <h1 className="text-3xl font-bold text-[#453a32] mb-2">نِست بلوم</h1>
             <p className="text-[#6b6b6b] mb-6">رحلتك في الحمل… يوم بيوم بجمال واهتمام</p>
-            <a href="/auth/signin" className="inline-block px-6 py-3 rounded-xl bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-all">
-              سجلي الدخول للبدء
-            </a>
+            <button
+              onClick={handleQuickSignIn}
+              disabled={isQuickLoading}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 text-white font-bold text-lg hover:bg-emerald-600 transition-all disabled:opacity-60 shadow-lg shadow-emerald-200"
+            >
+              {isQuickLoading ? 'جارٍ الدخول…' : 'دخول سريع — ابدئي الآن'}
+            </button>
+            <p className="mt-3 text-xs text-[#6b6b6b]">حساب افتراضي جاهز، بدون بريد أو كلمة مرور</p>
           </div>
           <InstallAppCard />
         </div>
@@ -116,19 +189,34 @@ export default function Home() {
     );
   }
 
-  const stageLabel = stage === 'first' ? 'الأول' : stage === 'second' ? 'الثاني' : 'الثالث';
+  const stageLabel =
+    stage === 'first' ? 'الأول' : stage === 'second' ? 'الثاني' : stage === 'third' ? 'الثالث' : 'ما بعد الولادة';
 
   return (
-    <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
+    <div className="min-h-screen bg-[#fdfbf7] p-4 pb-24 dir-rtl">
       {/* Header */}
       <header className="mb-6">
         <div className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold text-[#453a32]">صباح الخير 🌸</h1>
+          <h1 className="text-2xl font-bold text-[#453a32]">{currentGreeting()}</h1>
           <p className="text-[#6b6b6b]">
             أسبوع {currentWeek}، يوم {currentDay} من رحلتك
           </p>
         </div>
       </header>
+
+      {!dueDate && !lmpDate && (
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-emerald-50 border border-emerald-100 rounded-2xl p-4">
+          <p className="text-sm text-emerald-800">
+            لم تحددي موعد الولادة بعد — حدديه لتصبح التقديرات أكثر دقة.
+          </p>
+          <Link
+            href="/setup"
+            className="shrink-0 px-4 py-2 rounded-xl bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-all"
+          >
+            حددي الآن
+          </Link>
+        </div>
+      )}
 
       {/* Progress bar */}
       <div className="mb-6">
@@ -249,6 +337,7 @@ export default function Home() {
                   facilities={filteredFacilities()}
                   onFacilityClick={(f) => setSelectedFacility(f)}
                   cluster={true}
+                  height="100%"
                 />
               )}
             </div>
@@ -284,6 +373,24 @@ export default function Home() {
         facility={selectedFacility}
         onClose={() => setSelectedFacility(null)}
       />
+
+      {/* Bottom navigation */}
+      <nav className="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-[#f3e8dd]">
+        <div className="max-w-3xl mx-auto grid grid-cols-5">
+          {NAV_ITEMS.filter((item) =>
+            ['/', '/trackers', '/map', '/journal', '/settings'].includes(item.href)
+          ).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="flex flex-col items-center justify-center gap-1 py-2.5 text-[#6b6b6b] hover:text-emerald-600 transition-all"
+            >
+              <item.icon className="w-5 h-5" />
+              <span className="text-[10px] font-medium">{item.name}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
     </div>
   );
 }

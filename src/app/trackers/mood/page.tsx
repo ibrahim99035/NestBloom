@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
 import { Heart, Smile, Meh, Frown, Activity, ArrowLeft, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 
 interface MoodEntry {
   date: string;
@@ -18,6 +19,14 @@ const MOOD_LABELS: Record<number, { label: string; color: string }> = {
   5: { label: 'ممتاز', color: '#22c55e' },
 };
 
+// Local calendar day (not UTC) so entries land on the right day in Egypt.
+const localDateKey = (date = new Date()) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+};
+
 export default function MoodTrackerPage() {
   const { currentWeek } = usePregnancyStore();
   const [selectedMood, setSelectedMood] = useState<number | null>(null);
@@ -31,7 +40,7 @@ export default function MoodTrackerPage() {
       try {
         const parsed = JSON.parse(saved);
         setEntries(parsed);
-        const today = new Date().toISOString().split('T')[0];
+        const today = localDateKey();
         setTodayLogged(parsed.some((e: MoodEntry) => e.date === today));
       } catch {
         // ignore
@@ -40,12 +49,16 @@ export default function MoodTrackerPage() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('nestbloom-mood-entries', JSON.stringify(entries));
+    try {
+      localStorage.setItem('nestbloom-mood-entries', JSON.stringify(entries));
+    } catch {
+      // storage full / unavailable — keep the in-memory state working
+    }
   }, [entries]);
 
   const logMood = () => {
     if (!selectedMood) return;
-    const today = new Date().toISOString().split('T')[0];
+    const today = localDateKey();
     setEntries((prev) => [
       { date: today, mood: selectedMood, note: note || undefined },
       ...prev.filter((e) => e.date !== today),
@@ -53,10 +66,16 @@ export default function MoodTrackerPage() {
     setTodayLogged(true);
   };
 
+  // Only the last 7 days count towards "this week's average".
+  const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const recentEntries = entries.filter(
+    (e) => new Date(`${e.date}T00:00:00`).getTime() >= weekAgo
+  );
   const avgMood =
-    entries.length > 0
+    recentEntries.length > 0
       ? Math.round(
-          (entries.reduce((sum: number, e: MoodEntry) => sum + e.mood, 0) / entries.length) *
+          (recentEntries.reduce((sum: number, e: MoodEntry) => sum + e.mood, 0) /
+            recentEntries.length) *
             10
         ) / 10
       : 0;
@@ -64,12 +83,12 @@ export default function MoodTrackerPage() {
   return (
     <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
+        <Link
+          href="/"
           className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" /> العودة للرئيسية
-        </button>
+        </Link>
       </nav>
 
       <div className="max-w-lg mx-auto">
@@ -93,7 +112,6 @@ export default function MoodTrackerPage() {
 
           <div className="flex justify-center gap-2 mb-6">
             {Object.entries(MOOD_LABELS).map(([level, config]) => {
-              const Icon = selectedMood === parseInt(level) ? Heart : Heart;
               const selected = selectedMood === parseInt(level);
               const iconMap: Record<number, any> = {
                 1: Frown,
@@ -107,9 +125,10 @@ export default function MoodTrackerPage() {
                 <button
                   key={level}
                   onClick={() => setSelectedMood(parseInt(level))}
+                  style={selected ? { backgroundColor: config.color, color: '#fff' } : undefined}
                   className={`w-14 h-14 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all ${
                     selected
-                      ? `bg-${config.color.replace('#', '')} text-white shadow-lg`
+                      ? 'text-white shadow-lg'
                       : 'bg-slate-50 text-slate-500 border border-slate-200 hover:bg-slate-100'
                   }`}
                 >

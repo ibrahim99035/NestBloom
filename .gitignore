@@ -49,3 +49,6 @@ next-env.d.ts
 *.apk
 *.aab
 *.keystore
+
+# Playwright MCP artifacts
+.playwright-mcp/

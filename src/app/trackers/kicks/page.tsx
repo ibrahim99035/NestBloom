@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePregnancyStore } from '@/stores/usePregnancyStore';
 import { Heart, Timer, CheckCircle, ArrowLeft, Activity } from 'lucide-react';
+import Link from 'next/link';
 
 interface KickEntry {
   time: string;
@@ -30,7 +31,11 @@ export default function KickCounterPage() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('nestbloom-kick-sessions', JSON.stringify(sessions));
+    try {
+      localStorage.setItem('nestbloom-kick-sessions', JSON.stringify(sessions));
+    } catch {
+      // storage full / unavailable — keep the in-memory state working
+    }
   }, [sessions]);
 
   const startSession = () => {
@@ -41,8 +46,9 @@ export default function KickCounterPage() {
   };
 
   const addKick = () => {
-    setCount((c) => c + 1);
-    if (count + 1 >= goal) {
+    const next = count + 1;
+    setCount(next);
+    if (next >= goal) {
       setShowCelebration(true);
       setIsCounting(false);
     }
@@ -51,7 +57,7 @@ export default function KickCounterPage() {
   const finishSession = () => {
     if (!sessionStart) return;
     const entry: KickEntry = {
-      time: sessionStart.toLocaleTimeString('ar-SA', {
+      time: sessionStart.toLocaleTimeString('en-GB', {
         hour: '2-digit',
         minute: '2-digit',
       }),
@@ -60,6 +66,7 @@ export default function KickCounterPage() {
     setSessions((prev) => [entry, ...prev].slice(0, 50));
     setIsCounting(false);
     setSessionStart(null);
+    setShowCelebration(false);
   };
 
   const lastSession = sessions[0];
@@ -73,12 +80,12 @@ export default function KickCounterPage() {
   return (
     <div className="min-h-screen bg-[#fdfbf7] p-4 dir-rtl">
       <nav className="mb-6">
-        <button
-          onClick={() => {}}
+        <Link
+          href="/"
           className="text-slate-500 hover:text-emerald-600 flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" /> العودة للرئيسية
-        </button>
+        </Link>
       </nav>
 
       <div className="max-w-lg mx-auto">
@@ -120,7 +127,7 @@ export default function KickCounterPage() {
             <button
               onClick={finishSession}
               className="border-2 border-slate-200 text-slate-800 py-4 rounded-2xl font-bold hover:bg-slate-50 transition-all disabled:opacity-50"
-              disabled={!isCounting || count === 0}
+              disabled={count === 0 || (!isCounting && !showCelebration)}
             >
               إنهاء الجلسة
             </button>
@@ -130,7 +137,7 @@ export default function KickCounterPage() {
             <div className="mt-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center animate-bounce">
               <CheckCircle className="w-8 h-8 text-emerald-500 mx-auto mb-2" />
               <p className="font-bold text-emerald-700">وصلتي للهدف! 🎉</p>
-              <p className="text-sm text-emerald-600">جيد جداً، movimientos الجنين طبيعية</p>
+              <p className="text-sm text-emerald-600">حركات الجنين طبيعية، اطمئني 🌸</p>
             </div>
           )}
         </div>

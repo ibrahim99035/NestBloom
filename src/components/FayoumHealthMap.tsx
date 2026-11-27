@@ -1,7 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-import { Map as MaplibreMap, Marker, NavigationControl, GeolocateControl } from 'maplibre-gl';
+import {
+  Map as MaplibreMap,
+  Marker,
+  NavigationControl,
+  GeolocateControl,
+  setWorkerUrl,
+} from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 export type FacilityType =
@@ -37,23 +43,26 @@ interface FayoumHealthMapProps {
   facilities: Facility[];
   onFacilityClick?: (facility: Facility) => void;
   className?: string;
-  height?: string;
+  height?: number | string;
   cluster?: boolean;
 }
 
-const TYPE_CONFIG: Record<FacilityType, { color: string; icon: string; label: string; size: number }> = {
-  emergency: { color: '#ef4444', icon: '🏥', label: 'مستشفى عام / طوارئ', size: 44 },
-  insurance: { color: '#8b5cf6', icon: '🛡️', label: 'مستشفى تأمين صحي', size: 36 },
-  children: { color: '#3b82f6', icon: '👶', label: 'مستشفى أطفال', size: 36 },
-  specialized: { color: '#ec4899', icon: '🤰', label: 'مستشفى تخصصي', size: 36 },
-  phc: { color: '#10b981', icon: '🏠', label: 'وحدة رعاية أساسية', size: 36 },
-  other: { color: '#6b7280', icon: '🏥', label: 'أخرى', size: 32 },
+const FAYOUM_CENTER: [number, number] = [30.84, 29.31];
+
+const TYPE_CONFIG: Record<FacilityType, { color: string; icon: string; size: number }> = {
+  emergency: { color: '#ef4444', icon: '🏥', size: 40 },
+  insurance: { color: '#8b5cf6', icon: '🛡️', size: 34 },
+  children: { color: '#3b82f6', icon: '👶', size: 34 },
+  specialized: { color: '#ec4899', icon: '🤰', size: 34 },
+  phc: { color: '#10b981', icon: '🏠', size: 34 },
+  other: { color: '#6b7280', icon: '🏥', size: 30 },
 };
 
-function clusterPoints(
-  facilities: Facility[],
-  zoom: number
-) {
+type ClusterItem =
+  | { type: 'point'; id: string; coordinates: [number, number]; facilities: Facility[] }
+  | { type: 'cluster'; id: string; coordinates: [number, number]; count: number; facilities: Facility[] };
+
+function clusterPoints(facilities: Facility[], zoom: number): ClusterItem[] {
   if (zoom >= 12) {
     return facilities.map((f) => ({
       type: 'point' as const,
@@ -68,14 +77,12 @@ function clusterPoints(
 
   facilities.forEach((f) => {
     const [lng, lat] = f.geometry.coordinates;
-    const cellX = Math.floor(lng / gridSize);
-    const cellY = Math.floor(lat / gridSize);
-    const key = `${cellX},${cellY}`;
+    const key = `${Math.floor(lng / gridSize)},${Math.floor(lat / gridSize)}`;
     if (!grid.has(key)) grid.set(key, []);
     grid.get(key)!.push(f);
   });
 
-  const result: Array<{ type: 'cluster' | 'point'; id: string; coordinates: [number, number]; count?: number; facilities?: Facility[] }> = [];
+  const result: ClusterItem[] = [];
   let clusterId = 0;
 
   grid.forEach((facs) => {
@@ -86,17 +93,18 @@ function clusterPoints(
         coordinates: facs[0].geometry.coordinates,
         facilities: facs,
       });
-    } else {
-      const avgLng = facs.reduce((sum: number, f: Facility) => sum + f.geometry.coordinates[0], 0) / facs.length;
-      const avgLat = facs.reduce((sum: number, f: Facility) => sum + f.geometry.coordinates[1], 0) / facs.length;
-      result.push({
-        type: 'cluster',
-        id: `cluster-${clusterId++}`,
-        coordinates: [avgLng, avgLat],
-        count: facs.length,
-        facilities: facs,
-      });
+      return;
     }
+
+    const avgLng = facs.reduce((sum, f) => sum + f.geometry.coordinates[0], 0) / facs.length;
+    const avgLat = facs.reduce((sum, f) => sum + f.geometry.coordinates[1], 0) / facs.length;
+    result.push({
+      type: 'cluster',
+      id: `cluster-${clusterId++}`,
+      coordinates: [avgLng, avgLat],
+      count: facs.length,
+      facilities: facs,
+    });
   });
 
   return result;
@@ -106,114 +114,118 @@ export default function FayoumHealthMap({
   facilities,
   onFacilityClick,
   className,
-  height = '70vh',
+  height = '100%',
   cluster = true,
 }: FayoumHealthMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
   const markersRef = useRef<Marker[]>([]);
+  const isLoadedRef = useRef(false);
+
+  // Keep the latest props available to stable callbacks without re-creating the map.
+  const facilitiesRef = useRef(facilities);
+  const clusterRef = useRef(cluster);
+  const onFacilityClickRef = useRef(onFacilityClick);
+  facilitiesRef.current = facilities;
+  clusterRef.current = cluster;
+  onFacilityClickRef.current = onFacilityClick;
 
   const clearMarkers = useCallback(() => {
     markersRef.current.forEach((m) => m.remove());
     markersRef.current = [];
   }, []);
 
-  const renderMarkers = useCallback(
-    (map: MaplibreMap, facs: Facility[]) => {
-      const zoom = map.getZoom();
-      const clustered = cluster ? clusterPoints(facs, zoom) : facs.map((f) => ({ type: 'point' as const, id: f.id, coordinates: f.geometry.coordinates, facilities: [f] }));
+  const renderMarkers = useCallback(() => {
+    const map = mapRef.current;
+    if (!map) return;
 
-      clustered.forEach((item) => {
-        const el = document.createElement('div');
-        el.className = 'facility-marker';
-        el.style.cursor = 'pointer';
+    const facs = facilitiesRef.current;
+    const items = clusterRef.current
+      ? clusterPoints(facs, map.getZoom())
+      : facs.map<ClusterItem>((f) => ({
+          type: 'point',
+          id: f.id,
+          coordinates: f.geometry.coordinates,
+          facilities: [f],
+        }));
 
-        if (item.type === 'cluster') {
-          el.innerHTML = `
-            <div style="
-              background: rgba(16, 185, 129, 0.9);
-              width: 32px;
-              height: 32px;
-              border-radius: 50%;
-              border: 2px solid white;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            ">
-              <span style="color: white; font-weight: bold; font-size: 12px;">
-                ${item.count}
-              </span>
-            </div>
-          `;
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (item.facilities && item.facilities.length > 0) {
-              const first = item.facilities[0];
-              map.flyTo({
-                center: first.geometry.coordinates,
-                zoom: 13,
-                duration: 1000,
-              });
-            }
-          });
-        } else {
-          const f = item.facilities![0];
-          const props = f.properties;
-          const config = TYPE_CONFIG[props.type];
+    items.forEach((item) => {
+      const el = document.createElement('div');
+      el.style.cursor = 'pointer';
 
-          el.innerHTML = `
-            <div style="
-              background: ${config.color};
-              width: ${config.size}px;
-              height: ${config.size}px;
-              border-radius: 50% 50% 50% 0;
-              transform: rotate(-45deg);
-              border: 2px solid white;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.35);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            ">
-              <span style="transform: rotate(45deg); font-size: ${config.size * 0.45}px; line-height: 1;">
-                ${config.icon}
-              </span>
-            </div>
-          `;
+      if (item.type === 'cluster') {
+        el.innerHTML = `
+          <div style="
+            background: rgba(16, 185, 129, 0.95);
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; font-size: 13px;
+            font-family: system-ui, sans-serif;
+          ">${item.count}</div>
+        `;
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const first = item.facilities[0];
+          if (!first) return;
+          map.flyTo({ center: first.geometry.coordinates, zoom: 13, duration: 800 });
+        });
+      } else {
+        const f = item.facilities[0];
+        const config = TYPE_CONFIG[f.properties.type] ?? TYPE_CONFIG.other;
+        el.innerHTML = `
+          <div style="
+            background: ${config.color};
+            width: ${config.size}px; height: ${config.size}px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            display: flex; align-items: center; justify-content: center;
+          ">
+            <span style="transform: rotate(45deg); font-size: ${Math.round(config.size * 0.45)}px; line-height: 1;">
+              ${config.icon}
+            </span>
+          </div>
+        `;
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          map.flyTo({ center: f.geometry.coordinates, zoom: 15, duration: 800 });
+          onFacilityClickRef.current?.(f);
+        });
+      }
 
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-            map.flyTo({
-              center: f.geometry.coordinates,
-              zoom: 15,
-              duration: 1000,
-            });
-            onFacilityClick?.(f);
-          });
-        }
+      const marker = new Marker({ element: el, anchor: 'bottom' })
+        .setLngLat(item.coordinates)
+        .addTo(map);
 
-        const marker = new Marker({ element: el, anchor: 'bottom' })
-          .setLngLat(item.coordinates)
-          .addTo(map);
+      markersRef.current.push(marker);
+    });
+  }, []);
 
-        markersRef.current.push(marker);
-      });
-    },
-    [cluster, onFacilityClick]
-  );
-
+  // Create the map exactly once.
   useEffect(() => {
-    if (!mapContainer.current) return;
+    const container = mapContainer.current;
+    if (!container || mapRef.current) return;
+
+    // MapLibre resolves its worker with `new URL('./maplibre-gl-worker.mjs',
+    // import.meta.url)`. Turbopack rewrites that to a chunk that does not
+    // exist, so the worker fails to load and no tiles ever render. Point it at
+    // a copy of the worker served from /public instead.
+    setWorkerUrl('/maplibre-gl-worker.mjs');
 
     const map = new MaplibreMap({
-      container: mapContainer.current,
+      container,
       style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
-      center: [30.84, 29.31],
+      center: FAYOUM_CENTER,
       zoom: 10,
       attributionControl: false,
     });
 
-    map.addControl(new NavigationControl(), 'top-right');
+    mapRef.current = map;
+
+    map.addControl(new NavigationControl({ showCompass: false }), 'top-right');
     map.addControl(
       new GeolocateControl({
         positionOptions: { enableHighAccuracy: true },
@@ -224,35 +236,45 @@ export default function FayoumHealthMap({
     );
 
     map.on('load', () => {
-      renderMarkers(map, facilities);
+      isLoadedRef.current = true;
+      renderMarkers();
     });
 
     map.on('zoomend', () => {
-      if (!cluster) return;
+      if (!clusterRef.current) return;
       clearMarkers();
-      renderMarkers(map, facilities);
+      renderMarkers();
     });
 
-    mapRef.current = map;
+    map.on('error', (e) => {
+      console.warn('Map error:', e?.error?.message ?? e);
+    });
+
+    // Keep the canvas sized to its container (the map is often inside
+    // flex/grid layouts that change size after mount).
+    const resizeObserver = new ResizeObserver(() => map.resize());
+    resizeObserver.observe(container);
 
     return () => {
+      resizeObserver.disconnect();
       clearMarkers();
       map.remove();
       mapRef.current = null;
+      isLoadedRef.current = false;
     };
-  }, []);
+  }, [clearMarkers, renderMarkers]);
 
+  // Re-render markers when facilities or filters change.
   useEffect(() => {
-    const map = mapRef.current;
-    if (!map) return;
     clearMarkers();
-    renderMarkers(map, facilities);
+    if (isLoadedRef.current) renderMarkers();
   }, [facilities, clearMarkers, renderMarkers]);
 
   return (
     <div
       ref={mapContainer}
-      className={`${className} w-full h-[${height}] rounded-2xl overflow-hidden relative`}
+      className={`w-full rounded-2xl overflow-hidden relative bg-[#eef2f1] ${className ?? ''}`}
+      style={{ height: typeof height === 'number' ? `${height}px` : height, minHeight: 240 }}
     />
   );
 }
