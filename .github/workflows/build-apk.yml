@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build and Deploy
 
 on:
   push:
@@ -16,19 +16,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'pnpm'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm install
 
       - name: Build Next.js app
-        run: pnpm run build
+        run: npm run build
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
@@ -38,31 +33,3 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-
-      - name: Set up JDK
-        uses: actions/setup-java@v5
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Initialize Capacitor Android
-        run: |
-          npx cap init "نِست بلوم" app.nestbloom --skip-appid-validation
-          npx cap add android
-
-      - name: Copy web assets to Capacitor
-        run: npx cap copy android
-
-      - name: Build signed-debug APK
-        run: |
-          cd android
-          ./gradlew assembleDebug
-        env:
-          ANDROID_HOME: ${{ env.ANDROID_SDK_ROOT }}
-
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: nestbloom-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 30

@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { cookies } from 'next/headers';
 
-export const dynamic = 'force-dynamic';
-
 /**
  * Dev-mode sign-in: creates a NextAuth session for a demo user.
  * Only for local development — remove in production.
