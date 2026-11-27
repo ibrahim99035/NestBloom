@@ -35,3 +35,4 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           NEXT_TELEMETRY_DISABLED: '1'
           NODE_OPTIONS: --max-old-space-size=4096
+          CI: 'false'
