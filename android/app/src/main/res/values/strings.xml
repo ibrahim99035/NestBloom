@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">نِست بلوم</string>
+    <string name="title_activity_main">نِست بلوم</string>
+    <string name="package_name">app.nestbloom</string>
+    <string name="custom_url_scheme">app.nestbloom</string>
+</resources>

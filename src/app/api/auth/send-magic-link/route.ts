@@ -4,7 +4,6 @@ import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'NestBloom <onboarding@resend.dev>';
 
 function generateToken(): string {
@@ -47,8 +46,10 @@ export async function POST(req: Request) {
 
     const callbackUrl = `${process.env.NEXTAUTH_URL}/api/auth/magic-link/callback?token=${token}&email=${encodeURIComponent(email)}`;
 
-    // Send email via Resend
-    if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 're_your_resend_api_key_here') {
+    // Send email via Resend (instantiated lazily so builds don't require the key)
+    const apiKey = process.env.RESEND_API_KEY;
+    if (apiKey && apiKey !== 're_your_resend_api_key_here') {
+      const resend = new Resend(apiKey);
       await resend.emails.send({
         from: FROM_EMAIL,
         to: [email],

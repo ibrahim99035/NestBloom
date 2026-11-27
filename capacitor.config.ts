@@ -4,9 +4,10 @@ const config: CapacitorConfig = {
   appId: 'app.nestbloom',
   appName: 'نِست بلوم',
   server: {
-    url: 'https://nestbloom.vercel.app',
-    cleartext: true,
+    url: 'https://nest-bloom.vercel.app',
+    cleartext: false,
   },
+  webDir: 'www',
   android: {
     buildOptions: {
       keystorePath: '',
