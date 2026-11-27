@@ -47,7 +47,10 @@ export async function GET(req: Request) {
       maxAge: 30 * 24 * 60 * 60,
     });
 
-    const useSecureCookies = (process.env.NEXTAUTH_URL ?? '').startsWith('https://');
+    const proto =
+      req.headers.get('x-forwarded-proto') ??
+      new URL(req.url).protocol.replace(':', '');
+    const useSecureCookies = proto === 'https';
     const cookieName = useSecureCookies
       ? '__Secure-next-auth.session-token'
       : 'next-auth.session-token';

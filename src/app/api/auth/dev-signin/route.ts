@@ -26,9 +26,12 @@ export async function POST(req: Request) {
       maxAge,
     });
 
-    // Match NextAuth's own cookie naming (derived from NEXTAUTH_URL), or the
-    // session cookie will be written under a name it never reads back.
-    const useSecureCookies = (process.env.NEXTAUTH_URL ?? '').startsWith('https://');
+    // Match NextAuth's own cookie naming: secure cookies are prefixed with
+    // "__Secure-". Derive it from the actual request protocol.
+    const proto =
+      req.headers.get('x-forwarded-proto') ??
+      new URL(req.url).protocol.replace(':', '');
+    const useSecureCookies = proto === 'https';
     const cookieName = useSecureCookies
       ? '__Secure-next-auth.session-token'
       : 'next-auth.session-token';
