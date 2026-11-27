@@ -63,6 +63,18 @@ jobs:
           echo "$SDK_ROOT/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
           echo "$SDK_ROOT/platform-tools" >> "$GITHUB_PATH"
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Sync Capacitor Android project
+        run: npx cap sync android
+
       - name: Install Android platform
         run: |
           yes | sdkmanager --licenses > /dev/null || true
